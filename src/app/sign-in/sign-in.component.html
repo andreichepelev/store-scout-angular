@@ -1,0 +1,86 @@
+<!-- <mat-toolbar color="primary">
+  <h1>Sign In</h1>
+</mat-toolbar> -->
+
+<h1 mat-dialog-title>Log In</h1>
+<div mat-dialog-actions>
+  <div class="authBlock">
+      
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userName required>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl" placeholder="Password" #userPassword required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <div>
+      <button [disabled]="emailFormControl.hasError('required') || emailFormControl.hasError('email') || passwordFormControl.hasError('required')" 
+      mat-raised-button color="primary" mat-button 
+      (click)="authService.SignIn(userName.value, userPassword.value);
+      closeDialog();">
+        Log In
+      </button>
+    </div>
+
+    <div>
+      <button mat-raised-button color="warn" mat-button (click)="authService.GoogleAuth();
+      closeDialog();">
+        Log in with Google
+      </button>
+    </div>
+
+
+    <div class = "router-link">
+      <a (click)="openForgotPassWordDialog();
+      closeDialog();">
+      Forgot Password?</a>
+    </div>
+
+    <div class = "router-link">
+      <span>Don't have an account? <a (click)="openSignUpDialog();closeDialog();">
+        Sign Up
+      </a></span>
+    </div>
+
+  </div>
+</div>
+
+<!-- <div class="container">
+
+  <mat-grid-list cols="3">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+
+      
+      
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+
+</div> -->
+
+      
+          
+
+
+
+
+
+

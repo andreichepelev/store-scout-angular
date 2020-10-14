@@ -1,0 +1,20 @@
+table {
+    margin: 1em;
+    width: 95%;
+  }
+
+  .mat-header-cell {
+    padding: 2em;
+  }
+
+  .mat-mat-header-row {
+    padding: 2em;
+  }
+
+.mat-cell {
+  padding: 2em;
+}
+
+.mat-row {
+  padding: 2em;
+}

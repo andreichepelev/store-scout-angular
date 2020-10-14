@@ -1,0 +1,65 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button color="white" aria-label="Menu" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Store Scout</h1>
+    <span class="spacer"></span>
+
+    <span *ngIf="authService.isLoggedIn==true">
+      <span class="user-email" *ngIf="authService.userData as user">
+        <mat-icon>person</mat-icon>
+        <span class="user-icon">{{user.email}}</span>
+      </span>
+    </span>
+
+    <button mat-raised-button color="primary" 
+    *ngIf="authService.isLoggedIn==true; else notLoggenIn" 
+    (click)="authService.SignOut()">
+      Log Out
+    </button>
+    <ng-template #notLoggenIn>
+      <button 
+      mat-raised-button color="primary"
+      (click)="openLogInDialog()">
+        Log In
+      </button>
+    </ng-template> 
+
+</mat-toolbar>
+
+<div class="container">
+  
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened #sidenav>
+      <mat-tab-group>
+        
+        <mat-tab label="AppStore">
+          <p>
+          <h2>Apps</h2>
+          <p>
+          <app-apple-id-chips></app-apple-id-chips>
+          </p>
+          <button mat-raised-button color="primary">Create Report</button>
+        </mat-tab>
+    
+        <mat-tab label="PlayStore">
+          <p>
+          <h2>Apps</h2>
+          <p>
+            <app-google-id-chips></app-google-id-chips>
+          </p>    
+          <button mat-raised-button color="primary">Create Report</button>
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+      <!-- <button mat-button (click)="openLogInDialog()">Open dialog</button> -->
+      <h2 class="report-title">Your report</h2>
+      <app-table></app-table>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>

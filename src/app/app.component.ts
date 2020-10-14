@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'store-scout-angular';
+  title = 'store-scout';
+
+  constructor(){
+
+}
+
 }

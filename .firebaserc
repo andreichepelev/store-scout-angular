@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "store-scout-19f7d": {
+      "hosting": {
+        "store-scout-angular": [
+          "store-scout-19f7d"
+        ]
+      }
+    }
+  }
+}

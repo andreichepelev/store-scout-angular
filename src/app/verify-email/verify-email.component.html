@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Thank You for Registering</h1>
+
+
+<div mat-dialog-actions>
+  <div class="authBlock">
+
+      
+    <div *ngIf="authService.userData as user">
+      <p>We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+      <p>Please check your email and click on the link to verfiy your email address.</p>
+    </div>
+
+    <div>
+      <button
+      mat-raised-button color="primary" mat-button 
+      (click)="closeDialog();">
+        OK, got it
+      </button>
+    </div>
+
+
+    <div>
+      <button
+      mat-raised-button color="secondary" mat-button 
+      (click)="authService.SendVerificationMail()">
+        Resend verification email
+      </button>
+    </div>
+
+
+    <div class = "router-link">
+      <span>Go back to <a (click)="openLogInDialog(); 
+        closeDialog();">
+        Log In
+      </a></span>
+    </div>
+
+  </div>
+</div>
