@@ -12,14 +12,14 @@
       </span>
     </span>
 
-    <button mat-raised-button color="primary" 
+    <button mat-raised-button color="accent" 
     *ngIf="authService.isLoggedIn==true; else notLoggenIn" 
     (click)="authService.SignOut()">
       Log Out
     </button>
     <ng-template #notLoggenIn>
       <button 
-      mat-raised-button color="primary"
+      mat-raised-button color="accent"
       (click)="openLogInDialog()">
         Log In
       </button>
@@ -39,7 +39,7 @@
           <p>
           <app-apple-id-chips></app-apple-id-chips>
           </p>
-          <button mat-raised-button color="primary">Create Report</button>
+          <button mat-raised-button color="accent">Create Report</button>
         </mat-tab>
     
         <mat-tab label="PlayStore">
@@ -48,7 +48,7 @@
           <p>
             <app-google-id-chips></app-google-id-chips>
           </p>    
-          <button mat-raised-button color="primary">Create Report</button>
+          <button mat-raised-button color="accent">Create Report</button>
         </mat-tab>
 
       </mat-tab-group>
