@@ -10,7 +10,7 @@ export interface ID {
 @Component({
   selector: 'app-google-id-chips',
   templateUrl: './google-id-chips.component.html',
-  styleUrls: ['./google-id-chips.component.css']
+  styleUrls: ['./google-id-chips.component.scss']
 })
 export class GoogleIdChipsComponent implements OnInit {
 

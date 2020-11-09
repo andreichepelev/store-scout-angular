@@ -9,7 +9,7 @@ export interface ID {
 @Component({
   selector: 'app-apple-id-chips',
   templateUrl: './apple-id-chips.component.html',
-  styleUrls: ['./apple-id-chips.component.css']
+  styleUrls: ['./apple-id-chips.component.scss']
 })
 export class AppleIdChipsComponent implements OnInit {
 
