@@ -1,8 +1,8 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button color="white" aria-label="Menu" (click)="sidenav.toggle()">
+<mat-toolbar>
+    <button mat-icon-button color="primary" aria-label="Menu" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1>Store Scout</h1>
+    <h1>Zaibatsu Store Scout</h1>
     <span class="spacer"></span>
 
     <span *ngIf="authService.isLoggedIn==true">
@@ -12,14 +12,14 @@
       </span>
     </span>
 
-    <button mat-raised-button color="accent" 
+    <button mat-raised-button color="primary" 
     *ngIf="authService.isLoggedIn==true; else notLoggenIn" 
     (click)="authService.SignOut()">
       Log Out
     </button>
     <ng-template #notLoggenIn>
       <button 
-      mat-raised-button color="accent"
+      mat-raised-button color="primary"
       (click)="openLogInDialog()">
         Log In
       </button>
@@ -39,7 +39,7 @@
           <p>
           <app-apple-id-chips></app-apple-id-chips>
           </p>
-          <button mat-raised-button color="accent">Create Report</button>
+          <button mat-raised-button color="primary">Create Report</button>
         </mat-tab>
     
         <mat-tab label="PlayStore">
@@ -48,7 +48,7 @@
           <p>
             <app-google-id-chips></app-google-id-chips>
           </p>    
-          <button mat-raised-button color="accent">Create Report</button>
+          <button mat-raised-button color="primary">Create Report</button>
         </mat-tab>
 
       </mat-tab-group>
