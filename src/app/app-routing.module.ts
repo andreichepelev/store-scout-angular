@@ -7,10 +7,12 @@ import { SignUpComponent } from './sign-up/sign-up.component'
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { VerifyEmailComponent } from './verify-email/verify-email.component'
 import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', component: LandingComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'register-user', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent },

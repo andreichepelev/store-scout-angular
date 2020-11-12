@@ -29,6 +29,7 @@ import { AuthService } from './services/auth.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LandingComponent } from './landing/landing.component';
 
 
 
@@ -56,7 +57,8 @@ const firebaseConfig = {
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    DashboardComponent
+    DashboardComponent,
+    LandingComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),

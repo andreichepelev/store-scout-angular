@@ -1,0 +1,103 @@
+<mat-toolbar>
+    <h1 class = "dot">.</h1>
+    <h1>for your information</h1>
+    <span class="spacer"></span>
+
+    <span *ngIf="authService.isLoggedIn==true">
+      <span class="user-email" *ngIf="authService.userData as user">
+        <mat-icon>person</mat-icon>
+        <span class="user-icon">{{user.email}}</span>
+      </span>
+    </span>
+
+    <button mat-raised-button color="primary" 
+    *ngIf="authService.isLoggedIn==true; else notLoggenIn" 
+    (click)="authService.SignOut()">
+      Log Out
+    </button>
+    <ng-template #notLoggenIn>
+      <button 
+      mat-raised-button color="primary"
+      (click)="openLogInDialog()">
+        Try now for free
+      </button>
+    </ng-template>
+
+</mat-toolbar>
+
+<div class = "container">
+    <div class = row>
+        <div class = "bg">
+            <h2 class = "tagline">
+                <span>
+                    Never miss
+                </span>
+                <br>
+                <span>
+                    important things
+                </span>
+                <br>
+                <span>
+                    your competitors
+                </span>
+                <br>
+                <span>
+                    are doing
+                </span>
+            </h2>
+        </div>
+    </div>
+
+    <!-- <div class = "row light-block">
+        <div class ="">
+
+        </div>
+
+        <h3 class = "sub-tagline">
+            <span>
+                Zaibatsu <span>monitors</span> web and mobile apps
+            </span>
+            <br>
+            <span>
+                You get <span>notified</span> once something changes
+            </span>
+            <br>
+            <span>
+                This <span>saves</span> your time and money
+            </span>
+            <br>
+            <br>
+            <span>
+                <span>.fyi</span>
+            </span>
+        </h3>
+    </div> -->
+
+    <!-- <div class = "row light-block">
+        <h3 class = "sub-tagline">
+            <span>
+                Zaibatsu <span>monitors</span> web and mobile apps
+            </span>
+            <br>
+            <span>
+                You get <span>notified</span> once something changes
+            </span>
+            <br>
+            <span>
+                This <span>saves</span> your time and money
+            </span>
+            <br>
+            <br>
+            <span>
+                <span>.fyi</span>
+            </span>
+        </h3>
+    </div> -->
+
+    <div class="row dark-block">
+
+    </div>
+</div>
+
+
+
