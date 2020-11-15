@@ -19,13 +19,14 @@
       <button 
       mat-raised-button color="primary"
       (click)="openLogInDialog()">
-        Try now for free
+        Try for free
       </button>
     </ng-template>
 
 </mat-toolbar>
 
 <div class = "container">
+    
     <div class = row>
         <div class = "bg">
             <h2 class = "tagline">
@@ -48,55 +49,225 @@
         </div>
     </div>
 
-    <!-- <div class = "row light-block">
-        <div class ="">
+    <div class="row light-block">
+        <mat-grid-list cols="3" rowHeight="2:1">
+            <mat-grid-tile>
+                <h3 class = 'sub-tagline-center'>
+                    <img class = "big-icon" src="../../assets/img/search.png" alt="monitor">
+                    <br>
+                    <span>
+                        Zaibatsu <span>monitors</span>
+                    </span>
+                    <br>
+                    <span>
+                        web and mobile apps
+                    </span>
+                </h3>
+            </mat-grid-tile>
 
-        </div>
+            <mat-grid-tile>
+                <h3 class = 'sub-tagline-center'>
+                    <img class = "big-icon" src="../../assets/img/notifications.png" alt="notifications">
+                    <br>
+                    <span>
+                        You get <span>notified</span>
+                    </span>
+                    <br>
+                    <span>
+                        about the changes
+                    </span>
+                </h3>
+            </mat-grid-tile>
+            
+            <mat-grid-tile>
+                <h3 class = 'sub-tagline-center' rowHeight="2:1">
+                    <img class = "big-icon" src="../../assets/img/smile.png" alt="smile">
+                    <br>
+                    <span>
+                        This <span>saves</span> 
+                    </span>
+                    <br>
+                    <span>
+                        your time and money
+                    </span>
+                </h3>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
 
-        <h3 class = "sub-tagline">
-            <span>
-                Zaibatsu <span>monitors</span> web and mobile apps
-            </span>
-            <br>
-            <span>
-                You get <span>notified</span> once something changes
-            </span>
-            <br>
-            <span>
-                This <span>saves</span> your time and money
-            </span>
-            <br>
-            <br>
-            <span>
-                <span>.fyi</span>
-            </span>
-        </h3>
-    </div> -->
-
-    <!-- <div class = "row light-block">
-        <h3 class = "sub-tagline">
-            <span>
-                Zaibatsu <span>monitors</span> web and mobile apps
-            </span>
-            <br>
-            <span>
-                You get <span>notified</span> once something changes
-            </span>
-            <br>
-            <span>
-                This <span>saves</span> your time and money
-            </span>
-            <br>
-            <br>
-            <span>
-                <span>.fyi</span>
-            </span>
-        </h3>
-    </div> -->
 
     <div class="row dark-block">
-
+        <mat-grid-list cols="3" rowHeight="1:1">
+            <mat-grid-tile colspan="2">
+                <img class = "example-img-left" src="../../assets/img/store-scout-example.png" alt="store-scout-example">
+            </mat-grid-tile>
+            
+            <mat-grid-tile colspan="1">
+                <p class = "text-block">
+                    <span class = 'bigger-text'>
+                        Get the latest mobile app
+                    </span>
+                    <br>
+                    <span class = 'bigger-text'>
+                        updates for free in <span>1 click</span>
+                    </span>
+                    <br>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; Select apps you’re interested in and get their updates
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; Zaibatsu saves this list so you can get back later and generate a new update report <span>literally</span> in 1 click
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; This app is <span>free forever</span>
+                    </span>
+                    <br>
+                    <button mat-raised-button color="primary" class = "block-button">
+                        Try now!
+                    </button>
+                </p>
+            </mat-grid-tile>
+        </mat-grid-list>
     </div>
+
+
+    <div class="row dark-block">
+        <mat-grid-list cols="3" rowHeight="1:1">
+            <mat-grid-tile colspan="1">
+                <p class = "text-block">
+                    <span class = 'bigger-text'>
+                        <span>Automated mobile app updates</span> to
+                    </span>
+                    <br>
+                    <span class = 'bigger-text'>
+                        your inbox
+                    </span>
+                    <br>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; App Store and Play Store updates of apps of your choice with release notes
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; Stores are checked 3 times a day sending you updates <span>immediately</span>
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; Leave your email to be among <span>the first</span> to try it!
+                    </span>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail required>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-raised-button color="primary" class = "block-button">
+                        Keep me posted
+                    </button>
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+                <img class = "example-img-right" src="../../assets/img/store-scout-example.png" alt="store-scout-example">
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+
+
+    <div class="row dark-block">
+        <mat-grid-list cols="3" rowHeight="1:1">
+            <mat-grid-tile colspan="2">
+                <img class = "example-img-left" src="../../assets/img/store-scout-example.png" alt="store-scout-example">
+            </mat-grid-tile>
+            
+            <mat-grid-tile colspan="1">
+                <p class = "text-block">
+                    <span class = 'bigger-text'>
+                        <span>Handmade UX reports</span> on
+                    </span>
+                    <br>
+                    <span class = 'bigger-text'>
+                        competitor updates to your inbox
+                    </span>
+                    <br>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; Zaibatsu writes <span>custom scripts</span> to monitor websites, web and mobile apps
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; A product expert makes detailed UX and business analysis of changes made so you get <span>concentrated important information</span> instead of raw feed
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to discuss details
+                    </span>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail required>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-raised-button color="primary" class = "block-button">
+                        Contact me
+                    </button>
+                </p>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <div class = 'row light-block'>
+        <mat-grid-list cols="6" rowHeight="1:1">
+            <mat-grid-tile colspan='1'>
+                <img src="../../assets/img/andrei.jpg" alt="andrei" class='example-img-center'>
+            </mat-grid-tile>
+            <mat-grid-tile colspan='2'>
+                <p class = "text-block-no-padding">
+                    <span class = 'bigger-text'>
+                        Questions? Suggestions?
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        Reach out to Andrei Chepelev, Zaibatsu founder
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        Email: <a class='link' href="mailto:andrei@zaibatsu.fyi">andrei@zaibatsu.fyi</a>
+                    </span>
+                    <br>
+                    <span class = "smaller-text">
+                        <a class='link' href="https://www.linkedin.com/in/andrey-chepelev-6209941b7/">Linkedin </a> &#9679;
+                        <a class='link' href="https://www.facebook.com/pirunpoika/"> Facebook </a> &#9679;
+                        <a class='link' href="https://github.com/andreichepelev"> Github</a>
+                    </span>
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile colspan='2'>
+            </mat-grid-tile>
+            <mat-grid-tile colspan='1'>
+                <span class='bottom-absolute'>
+                    .fyi
+                </span>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+
 </div>
 
 

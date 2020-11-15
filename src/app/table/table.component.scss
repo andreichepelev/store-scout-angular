@@ -3,11 +3,11 @@ table {
     width: 95%;
   }
 
-  .mat-header-cell {
+.mat-header-cell {
     padding: 2em;
   }
 
-  .mat-mat-header-row {
+.mat-mat-header-row {
     padding: 2em;
   }
 
@@ -17,4 +17,24 @@ table {
 
 .mat-row {
   padding: 2em;
+}
+
+.mat-column-app {
+  flex: 0 0 15% !important;
+  width: 15% !important
+}
+
+.mat-column-releaseDate {
+  flex: 0 0 15% !important;
+  width: 15% !important
+}
+
+.mat-column-version {
+  flex: 0 0 10% !important;
+  width: 10% !important
+}
+
+.mat-column-releaseNotes {
+  flex: 0 0 60% !important;
+  width: 60% !important
 }

@@ -11,10 +11,10 @@ export interface Report {
 
 //table data:
 const reportData: Report[] = [
-  {app: "Instagram", releaseDate: "May 28th 2020", version: "4.2.45", releaseNotes: "Kick-start your Material Design project with this customizable UI kit, complete with components and styles"},
-  {app: "Facebook", releaseDate: "June 7th 2020", version: "12.3.1", releaseNotes: "A free UI Kit to quickly design mockups and (high fidelity) prototypes with hundreds of responsive components & widgets – based on Figmas component system."},
-  {app: "Airbnb", releaseDate: "May 10th 2020", version: "1.38.9", releaseNotes: "Gallery. Share, upload, and present design iterations with your team ... kit for Figma. Create dark theme Material layouts with this component library for Figma "},
-  {app: "Turo", releaseDate: "April 30th 2020", version: "6.11.2", releaseNotes: "Lorem ipsum Carfago delendam est"}
+  {app: "Skype for iPhone 12+", releaseDate: "9 Nov 2020", version: "8.66", releaseNotes: "We're listening to your feedback and working hard to improve Skype. Here's what's new: - Customised message reactions - Raise your hand during a group call - Smart share suggestions - Bug fixes and stability improvements Visit https://go.skype.com/whatsnew for more details."},
+  {app: "Pinterest: Lifestyle Ideas 12+", releaseDate: "12 Nov 2020", version: "8.41", releaseNotes: "Every week, we polish up the Pinterest app. This update includes: - Introducing the Pinterest iMessage extension! Now you can search and share pins with your friends directly in iMessage - Bug fixes - Performance improvements Tell us if you like this latest version at https://help.pinterest.com/contact."},
+  {app: "Gmail - Email by Google 4+", releaseDate: "7 Nov 2020", version: "6.0.201018", releaseNotes: "Thanks for using Gmail! This release brings you a new Gmail icon and bug fixes that improve our product to help you do more in one place."},
+  {app: "Spotify New Music and Podcasts 12+", releaseDate: "10 Nov 2020", version: "8.5.83", releaseNotes: "We’re always making changes and improvements to Spotify. To make sure you don’t miss a thing, just keep your Updates turned on. Bug fixes and improvements in this version include: - Fixed stability and performance issues"}
 ];
 
 @Component({
