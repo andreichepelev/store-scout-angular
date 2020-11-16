@@ -161,7 +161,7 @@
                     <br>
                     <mat-form-field class="full-width">
                         <mat-label>Email</mat-label>
-                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail required>
+                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
                         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                           Please enter a valid email address
                         </mat-error>
@@ -176,7 +176,7 @@
                 </p>
             </mat-grid-tile>
             <mat-grid-tile colspan="2">
-                <img class = "example-img-right" src="../../assets/img/store-scout-example.png" alt="store-scout-example">
+                <img class = "example-img-right" src="../../assets/img/automated-report.png" alt="store-scout-example">
             </mat-grid-tile>
         </mat-grid-list>
     </div>
@@ -186,7 +186,7 @@
     <div class="row dark-block">
         <mat-grid-list cols="3" rowHeight="1:1">
             <mat-grid-tile colspan="2">
-                <img class = "example-img-left" src="../../assets/img/store-scout-example.png" alt="store-scout-example">
+                <img class = "example-img-left" src="../../assets/img/ui-scout-example.png" alt="store-scout-example">
             </mat-grid-tile>
             
             <mat-grid-tile colspan="1">
@@ -214,7 +214,7 @@
                     <br>
                     <mat-form-field class="full-width">
                         <mat-label>Email</mat-label>
-                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail required>
+                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
                         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                           Please enter a valid email address
                         </mat-error>
@@ -237,23 +237,27 @@
                 <img src="../../assets/img/andrei.jpg" alt="andrei" class='example-img-center'>
             </mat-grid-tile>
             <mat-grid-tile colspan='2'>
-                <p class = "text-block-no-padding">
+                <p>
                     <span class = 'bigger-text'>
                         Questions? Suggestions?
                     </span>
                     <br>
-                    <span class = "smaller-text">
+                    <span class = "x-smaller-text">
                         Reach out to Andrei Chepelev, Zaibatsu founder
                     </span>
                     <br>
-                    <span class = "smaller-text">
+                    <span class = "x-smaller-text">
                         Email: <a class='link' href="mailto:andrei@zaibatsu.fyi">andrei@zaibatsu.fyi</a>
                     </span>
                     <br>
-                    <span class = "smaller-text">
+                    <span class = "x-smaller-text">
                         <a class='link' href="https://www.linkedin.com/in/andrey-chepelev-6209941b7/">Linkedin </a> &#9679;
                         <a class='link' href="https://www.facebook.com/pirunpoika/"> Facebook </a> &#9679;
                         <a class='link' href="https://github.com/andreichepelev"> Github</a>
+                    </span>
+                    <br>
+                    <span class='x-smaller-text'>
+                        MPG Europe OÜ || Sepapaja tn 6 Tallinn Harjumaa 15551
                     </span>
                 </p>
             </mat-grid-tile>

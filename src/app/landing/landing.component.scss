@@ -91,8 +91,22 @@
         }
 }
 
+.x-smaller-text {
+    color: white;
+    line-height: 1.5em;
+    font-size: 1.2em;
+  
+    span {
+        color: #F4DD53;
+        }
+}
+
 .light-block {
     background-color: #303030;
+}
+
+.no-padding {
+    padding-left: 0;
 }
 
 .example-img-left {
@@ -132,10 +146,6 @@
 
 .text-block {
     padding-left: 2em;
-}
-
-.text-block-no-padding {
-    padding-left: 0;
 }
 
 .block-button {
