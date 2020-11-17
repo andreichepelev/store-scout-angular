@@ -20,7 +20,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from '../environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -30,6 +29,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LandingComponent } from './landing/landing.component';
+import { LayoutModule } from '@angular/cdk/layout'
 
 
 
@@ -79,7 +79,8 @@ const firebaseConfig = {
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    LayoutModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -1,6 +1,11 @@
 <mat-toolbar>
-    <h1 class = "dot">.</h1>
-    <h1>for your information</h1>
+    
+    <h1 class = "dot" *ngIf="(isDesktop | async)?.matches">.</h1>
+    <h1 *ngIf="(isDesktop | async)?.matches">for your information</h1>
+
+    <h1 class = 'dot-mobile' *ngIf="(isMobile | async)?.matches">.</h1>
+    <h1 class = 'h1-mobile' *ngIf="(isMobile | async)?.matches">for your information</h1>
+
     <span class="spacer"></span>
 
     <span *ngIf="authService.isLoggedIn==true">
@@ -26,10 +31,11 @@
 </mat-toolbar>
 
 <div class = "container">
-    
+
     <div class = row>
-        <div class = "bg">
-            <h2 class = "tagline">
+
+        <div class = 'bg-mobile' *ngIf="(isMobile | async)?.matches">
+            <h2 class = "tagline-mobile">
                 <span>
                     Never miss
                 </span>
@@ -47,13 +53,35 @@
                 </span>
             </h2>
         </div>
+
+        <div class = "bg" *ngIf="(isDesktop | async)?.matches">
+
+            <h2 class = "tagline">
+                <span>
+                    Never miss
+                </span>
+                <br>
+                <span>
+                    important things
+                </span>
+                <br>
+                <span>
+                    your competitors
+                </span>
+                <br>
+                <span>
+                    are doing
+                </span>
+            </h2>
+
+        </div>
     </div>
 
-    <div class="row light-block">
+    <div class="row light-block" *ngIf="(isDesktop | async)?.matches">
         <mat-grid-list cols="3" rowHeight="2:1">
             <mat-grid-tile>
                 <h3 class = 'sub-tagline-center'>
-                    <img class = "big-icon" src="../../assets/img/search.png" alt="monitor">
+                    <img src="../../assets/img/search.png" alt="monitor">
                     <br>
                     <span>
                         Zaibatsu <span>monitors</span>
@@ -67,7 +95,7 @@
 
             <mat-grid-tile>
                 <h3 class = 'sub-tagline-center'>
-                    <img class = "big-icon" src="../../assets/img/notifications.png" alt="notifications">
+                    <img src="../../assets/img/notifications.png" alt="notifications">
                     <br>
                     <span>
                         You get <span>notified</span>
@@ -81,7 +109,7 @@
             
             <mat-grid-tile>
                 <h3 class = 'sub-tagline-center' rowHeight="2:1">
-                    <img class = "big-icon" src="../../assets/img/smile.png" alt="smile">
+                    <img src="../../assets/img/smile.png" alt="smile">
                     <br>
                     <span>
                         This <span>saves</span> 
@@ -96,7 +124,48 @@
     </div>
 
 
-    <div class="row dark-block">
+    <div class="row light-block" *ngIf="(isMobile | async)?.matches">
+        <br>
+        <h3 class = 'sub-tagline-center-mobile'>
+            <img src="../../assets/img/search.png" alt="monitor">
+            <br>
+            <span>
+                Zaibatsu <span>monitors</span>
+            </span>
+            <br>
+            <span>
+                web and mobile apps
+            </span>
+        </h3>
+        <br>
+        <h3 class = 'sub-tagline-center-mobile'>
+            <img src="../../assets/img/notifications.png" alt="notifications">
+            <br>
+            <span>
+                You get <span>notified</span>
+            </span>
+            <br>
+            <span>
+                about the changes
+            </span>
+        </h3>
+        <br>
+        <h3 class = 'sub-tagline-center-mobile'>
+            <img src="../../assets/img/smile.png" alt="smile">
+            <br>
+            <span>
+                This <span>saves</span> 
+            </span>
+            <br>
+            <span>
+                your time and money
+            </span>
+        </h3>
+        <br>
+    </div>
+
+
+    <div class="row dark-block" *ngIf="(isDesktop | async)?.matches">
         <mat-grid-list cols="3" rowHeight="1:1">
             <mat-grid-tile colspan="2">
                 <img class = "example-img-left" src="../../assets/img/store-scout-example.png" alt="store-scout-example">
@@ -133,17 +202,49 @@
         </mat-grid-list>
     </div>
 
+    <div class="row dark-block-mobile" *ngIf="(isMobile | async)?.matches">
+        <br>
+        <img class = "example-img-center-mobile" src="../../assets/img/store-scout-example-mobile.png" alt="store-scout-example-mobile">
+        <br>
+        <p class = "text-block">
+            <span class = 'bigger-text-mobile'>
+                Get the latest mobile app
+            </span>
+            <br>
+            <span class = 'bigger-text-mobile'>
+                updates for free in <span>1 click</span>
+            </span>
+            <br>
+            <br>
+            <span class = "smaller-text-mobile">
+                &#9679; Select apps you’re interested in and get their updates
+            </span>
+            <br>
+            <span class = "smaller-text-mobile">
+                &#9679; Zaibatsu saves this list so you can get back later and generate a new update report <span>literally</span> in 1 click
+            </span>
+            <br>
+            <span class = "smaller-text-mobile">
+                &#9679; This app is <span>free forever</span>
+            </span>
+            <br>
+            <button mat-raised-button color="primary" class = "block-button">
+                Try now!
+            </button>
+            <br>
+        </p>
+    </div>
 
-    <div class="row dark-block">
+    <div class="row dark-block" *ngIf="(isDesktop | async)?.matches">
         <mat-grid-list cols="3" rowHeight="1:1">
             <mat-grid-tile colspan="1">
                 <p class = "text-block">
                     <span class = 'bigger-text'>
-                        <span>Automated mobile app updates</span> to
+                        <span>Automated</span> mobile app updates 
                     </span>
                     <br>
                     <span class = 'bigger-text'>
-                        your inbox
+                        to your inbox
                     </span>
                     <br>
                     <br>
@@ -182,8 +283,51 @@
     </div>
 
 
+    <div class="row dark-block-mobile" *ngIf="(isMobile | async)?.matches">
+        <img class = "example-img-center-mobile" src="../../assets/img/automated-report-mobile.png" alt="automated-report-mobile">
+        <br>
+                <p class = "text-block">
+                    <span class = 'bigger-text-mobile'>
+                        <span>Automated</span> mobile app updates
+                    </span>
+                    <br>
+                    <span class = 'bigger-text-mobile'>
+                        to your inbox
+                    </span>
+                    <br>
+                    <br>
+                    <span class = "smaller-text-mobile">
+                        &#9679; App Store and Play Store updates of apps of your choice with release notes
+                    </span>
+                    <br>
+                    <span class = "smaller-text-mobile">
+                        &#9679; Stores are checked 3 times a day sending you updates <span>immediately</span>
+                    </span>
+                    <br>
+                    <span class = "smaller-text-mobile">
+                        &#9679; Leave your email below to be among <span>the first</span> to try it!
+                    </span>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-raised-button color="primary" class = "block-button">
+                        Keep me posted
+                    </button>
+                </p>
+                <br>
+    </div>
 
-    <div class="row dark-block">
+
+    <div class="row dark-block" *ngIf="(isDesktop | async)?.matches">
         <mat-grid-list cols="3" rowHeight="1:1">
             <mat-grid-tile colspan="2">
                 <img class = "example-img-left" src="../../assets/img/ui-scout-example.png" alt="store-scout-example">
@@ -192,7 +336,7 @@
             <mat-grid-tile colspan="1">
                 <p class = "text-block">
                     <span class = 'bigger-text'>
-                        <span>Handmade UX reports</span> on
+                        <span>Handmade</span> UX reports on
                     </span>
                     <br>
                     <span class = 'bigger-text'>
@@ -229,7 +373,57 @@
                 </p>
             </mat-grid-tile>
         </mat-grid-list>
+        <br>
+        <br>
     </div>
+
+
+    <div class="row dark-block-mobile" *ngIf="(isMobile | async)?.matches">
+
+                <img class = "example-img-center-mobile" src="../../assets/img/ui-scout-example-mobile.png" alt="store-scout-example">
+
+
+                <p class = "text-block">
+                    <span class = 'bigger-text-mobile'>
+                        <span>Handmade</span> UX reports on
+                    </span>
+                    <br>
+                    <span class = 'bigger-text-mobile'>
+                        competitor updates to your inbox
+                    </span>
+                    <br>
+                    <br>
+                    <span class = "smaller-text-mobile">
+                        &#9679; Zaibatsu writes <span>custom scripts</span> to monitor websites, web and mobile apps
+                    </span>
+                    <br>
+                    <span class = "smaller-text-mobile">
+                        &#9679; A product expert makes detailed UX and business analysis of changes made so you get <span>concentrated important information</span> instead of raw feed
+                    </span>
+                    <br>
+                    <span class = "smaller-text-mobile">
+                        &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to discuss details
+                    </span>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-raised-button color="primary" class = "block-button">
+                        Contact me
+                    </button>
+                </p>
+        <br>
+        <br>
+    </div>
+
 
     <div class = 'row light-block'>
         <mat-grid-list cols="6" rowHeight="1:1">
