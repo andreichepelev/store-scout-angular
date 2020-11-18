@@ -186,9 +186,11 @@
                         &#9679; Select apps you’re interested in and get their updates
                     </span>
                     <br>
+                    <br>
                     <span class = "smaller-text">
                         &#9679; Zaibatsu saves this list so you can get back later and generate a new update report <span>literally</span> in 1 click
                     </span>
+                    <br>
                     <br>
                     <span class = "smaller-text">
                         &#9679; This app is <span>free forever</span>
@@ -220,9 +222,11 @@
                 &#9679; Select apps you’re interested in and get their updates
             </span>
             <br>
+            <br>
             <span class = "smaller-text-mobile">
                 &#9679; Zaibatsu saves this list so you can get back later and generate a new update report <span>literally</span> in 1 click
             </span>
+            <br>
             <br>
             <span class = "smaller-text-mobile">
                 &#9679; This app is <span>free forever</span>
@@ -252,13 +256,16 @@
                         &#9679; App Store and Play Store updates of apps of your choice with release notes
                     </span>
                     <br>
+                    <br>
                     <span class = "smaller-text">
                         &#9679; Stores are checked 3 times a day sending you updates <span>immediately</span>
                     </span>
                     <br>
+                    <br>
                     <span class = "smaller-text">
                         &#9679; Leave your email to be among <span>the first</span> to try it!
                     </span>
+                    <br>
                     <br>
                     <mat-form-field class="full-width">
                         <mat-label>Email</mat-label>
@@ -300,13 +307,16 @@
                         &#9679; App Store and Play Store updates of apps of your choice with release notes
                     </span>
                     <br>
+                    <br>
                     <span class = "smaller-text-mobile">
                         &#9679; Stores are checked 3 times a day sending you updates <span>immediately</span>
                     </span>
                     <br>
+                    <br>
                     <span class = "smaller-text-mobile">
                         &#9679; Leave your email below to be among <span>the first</span> to try it!
                     </span>
+                    <br>
                     <br>
                     <mat-form-field class="full-width">
                         <mat-label>Email</mat-label>
@@ -328,6 +338,8 @@
 
 
     <div class="row dark-block" *ngIf="(isDesktop | async)?.matches">
+        <br>
+        <br>
         <mat-grid-list cols="3" rowHeight="1:1">
             <mat-grid-tile colspan="2">
                 <img class = "example-img-left" src="../../assets/img/ui-scout-example.png" alt="store-scout-example">
@@ -345,15 +357,17 @@
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; Zaibatsu writes <span>custom scripts</span> to monitor websites, web and mobile apps
+                        &#9679; We write <span>custom scripts</span> to monitor websites, web and mobile apps
                     </span>
                     <br>
-                    <span class = "smaller-text">
-                        &#9679; A product expert makes detailed UX and business analysis of changes made so you get <span>concentrated important information</span> instead of raw feed
-                    </span>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to discuss details
+                        &#9679; We analyze any changes detected, so you get <span>concentrated information</span> instead of raw feed
+                    </span>
+                    <br>
+                    <br>
+                    <span class = "smaller-text">
+                        &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to learn more
                     </span>
                     <br>
                     <mat-form-field class="full-width">
@@ -368,7 +382,7 @@
                     </mat-form-field>
                     <br>
                     <button mat-raised-button color="primary" class = "block-button">
-                        Contact me
+                        Tell me more
                     </button>
                 </p>
             </mat-grid-tile>
@@ -380,69 +394,69 @@
 
     <div class="row dark-block-mobile" *ngIf="(isMobile | async)?.matches">
 
-                <img class = "example-img-center-mobile" src="../../assets/img/ui-scout-example-mobile.png" alt="store-scout-example">
+        <img class = "example-img-center-mobile" src="../../assets/img/ui-scout-example-mobile.png" alt="store-scout-example">
 
-
-                <p class = "text-block">
-                    <span class = 'bigger-text-mobile'>
-                        <span>Handmade</span> UX reports on
-                    </span>
-                    <br>
-                    <span class = 'bigger-text-mobile'>
-                        competitor updates to your inbox
-                    </span>
-                    <br>
-                    <br>
-                    <span class = "smaller-text-mobile">
-                        &#9679; Zaibatsu writes <span>custom scripts</span> to monitor websites, web and mobile apps
-                    </span>
-                    <br>
-                    <span class = "smaller-text-mobile">
-                        &#9679; A product expert makes detailed UX and business analysis of changes made so you get <span>concentrated important information</span> instead of raw feed
-                    </span>
-                    <br>
-                    <span class = "smaller-text-mobile">
-                        &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to discuss details
-                    </span>
-                    <br>
-                    <mat-form-field class="full-width">
-                        <mat-label>Email</mat-label>
-                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                          Please enter a valid email address
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                          Email is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                    <br>
-                    <button mat-raised-button color="primary" class = "block-button">
-                        Contact me
-                    </button>
-                </p>
+        <br>
+        <p class = "text-block">
+            <span class = 'bigger-text-mobile'>
+                <span>Handmade</span> UX reports on
+            </span>
+            <br>
+            <span class = 'bigger-text-mobile'>
+                competitor updates to your inbox
+            </span>
+            <br>
+            <br>
+            <span class = "smaller-text-mobile">
+                &#9679; We write <span>custom scripts</span> to monitor websites, web and mobile apps
+            </span>
+            <br>
+            <br>
+            <span class = "smaller-text-mobile">
+                &#9679; We analyze any changes detected, so you get <span>concentrated information</span> instead of raw feed
+            </span>
+            <br>
+            <br>
+            <span class = "smaller-text-mobile">
+                &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to learn more
+            </span>
+            <br>
+            <br>
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="primary" class = "block-button">
+                Tell me more
+            </button>
+        </p>
         <br>
         <br>
     </div>
 
 
-    <div class = 'row light-block'>
+    <div class = 'row light-block' *ngIf="(isDesktop | async)?.matches">
         <mat-grid-list cols="6" rowHeight="1:1">
             <mat-grid-tile colspan='1'>
-                <img src="../../assets/img/andrei.jpg" alt="andrei" class='example-img-center'>
+                <img src="../../assets/img/andrei-small.jpg" alt="andrei" class='example-img-center-round'>
             </mat-grid-tile>
             <mat-grid-tile colspan='2'>
-                <p>
+                <p class = "left-absolute">
                     <span class = 'bigger-text'>
                         Questions? Suggestions?
                     </span>
                     <br>
                     <span class = "x-smaller-text">
-                        Reach out to Andrei Chepelev, Zaibatsu founder
+                        Andrei Chepelev, Zaibatsu founder
                     </span>
                     <br>
-                    <span class = "x-smaller-text">
-                        Email: <a class='link' href="mailto:andrei@zaibatsu.fyi">andrei@zaibatsu.fyi</a>
-                    </span>
                     <br>
                     <span class = "x-smaller-text">
                         <a class='link' href="https://www.linkedin.com/in/andrey-chepelev-6209941b7/">Linkedin </a> &#9679;
@@ -450,8 +464,17 @@
                         <a class='link' href="https://github.com/andreichepelev"> Github</a>
                     </span>
                     <br>
+                        <span class = "x-smaller-text">
+                            <a class='link' href="mailto:andrei@zaibatsu.fyi">andrei@zaibatsu.fyi</a>
+                        </span>
+                    <br>
+                    <br>
                     <span class='x-smaller-text'>
-                        MPG Europe OÜ || Sepapaja tn 6 Tallinn Harjumaa 15551
+                        MPG Europe OÜ &#9679; Sepapaja tn 6
+                    </span>
+                    <br>
+                    <span class='x-smaller-text'>
+                        Tallinn 15551 Estonia
                     </span>
                 </p>
             </mat-grid-tile>
@@ -465,6 +488,39 @@
         </mat-grid-list>
     </div>
 
+    <div class = 'row light-block' *ngIf="(isMobile | async)?.matches">
+        <br>
+        <img src="../../assets/img/andrei-small.jpg" alt="andrei" class='example-img-center-mobile-round'>
+        <br>
+        <h3 class = 'sub-tagline-center-mobile'>
+            Questions? Suggestions?
+        </h3>
+        <p class = "x-smaller-text-mobile">
+            Andrei Chepelev, Zaibatsu founder
+        </p>
+        <p class = "x-smaller-text-mobile">
+            <a class='link' href="https://www.linkedin.com/in/andrey-chepelev-6209941b7/">Linkedin </a> &#9679;
+            <a class='link' href="https://www.facebook.com/pirunpoika/"> Facebook </a> &#9679;
+            <a class='link' href="https://github.com/andreichepelev"> Github</a>
+        </p>
+        <p class = "x-smaller-text-mobile">
+            <a class='link' href="mailto:andrei@zaibatsu.fyi">andrei@zaibatsu.fyi</a>
+        </p>
+        <br>
+        <br>
+        <p class = "x-smaller-text-mobile">
+            MPG Europe OÜ &#9679; Sepapaja tn 6
+        </p>
+        <p class = "x-smaller-text-mobile">
+            Tallinn 15551 Estonia
+        </p>
+        <br>
+        <br>
+        <p class="x-smaller-text-mobile">
+            <span>.fyi</span>
+        </p>
+        <br>
+    </div>
 
 </div>
 
