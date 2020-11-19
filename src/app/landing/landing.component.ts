@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service'
 import { SignInComponent } from '../sign-in/sign-in.component'
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
-import { BreakpointObserver, Breakpoints,  BreakpointState } from '@angular/cdk/layout';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 
 @Component({
