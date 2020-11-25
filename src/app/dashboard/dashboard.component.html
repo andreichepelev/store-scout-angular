@@ -41,23 +41,39 @@
   <mat-sidenav mode="side" opened #sidenav 
   [mode]="mobileQuery.matches ? 'over' : 'side'">
     <mat-tab-group>
-      
       <mat-tab label="AppStore">
-        <p>
-        <h2>Apps</h2>
+        <br>
+        <span class = 'bigger-text'>
+          Paste IDs of the apps you wish to 
+        </span>
+        <br>
+        <span class = 'bigger-text'>
+          monitor into the field below:
+        </span>
+        <br>
+        <br>
         <p>
         <app-apple-id-chips></app-apple-id-chips>
         </p>
-        <button mat-raised-button color="primary">Create Report</button>
+        <button mat-raised-button color="primary">Check what's new</button>
       </mat-tab>
   
       <mat-tab label="PlayStore">
-        <p>
-        <h2>Apps</h2>
+        
+        <br>
+        <span class = 'bigger-text'>
+          Paste IDs of the apps you wish to
+        </span>
+        <br>
+        <span class = 'bigger-text'>
+          monitor into the field below:
+        </span>
+        <br>
+        <br>
         <p>
           <app-google-id-chips></app-google-id-chips>
         </p>    
-        <button mat-raised-button color="primary">Create Report</button>
+        <button mat-raised-button color="primary">Check what's new</button>
       </mat-tab>
 
     </mat-tab-group>
@@ -65,7 +81,7 @@
   
   <mat-sidenav-content>
     <!-- <button mat-button (click)="openLogInDialog()">Open dialog</button> -->
-    <h2 class="report-title">Your report</h2>
+    <h2 class="report-title">Here's what's new:</h2>
     <app-table></app-table>
   </mat-sidenav-content>
 

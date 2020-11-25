@@ -2,9 +2,7 @@ import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core'
 import { AuthService } from '../services/auth.service'
 import { SignInComponent } from '../sign-in/sign-in.component'
 import { MatDialog } from '@angular/material/dialog'
-import {MediaMatcher} from '@angular/cdk/layout';
-
-
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,8 +13,6 @@ export class DashboardComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList
   private _mobileQueryListener: () => void;
-
-
 
   constructor(
     public authService: AuthService,

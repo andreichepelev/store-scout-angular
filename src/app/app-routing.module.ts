@@ -6,18 +6,58 @@ import { SignInComponent } from './sign-in/sign-in.component'
 import { SignUpComponent } from './sign-up/sign-up.component'
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
 import { VerifyEmailComponent } from './verify-email/verify-email.component'
-import { AppComponent } from './app.component';
+// import { AuthGuard } from "./services/auth.guard";
 import { LandingComponent } from './landing/landing.component';
+import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
+const redirectUnauthorizedToLanding = () => redirectUnauthorizedTo(['landing']);
+const redirectLoggedInToDashboard = () => redirectLoggedInTo(['dashboard']);
+
+
+// {
+//   path: 'send-email',
+//   component: SendEmailComponent,
+//   canActivate: [AngularFireAuthGuard],
+//   data: { authGuardPipe: redirectUnauthorizedToLogin }
+// },
+// {
+//   path: 'login',
+//   component: PasswordLessLoginComponent,
+//   canActivate: [AngularFireAuthGuard],
+//   data: { authGuardPipe: redirectLoggedInToSendEmail }
+// },
 
 const routes: Routes = [
   // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '', component: LandingComponent },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'register-user', component: SignUpComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent }
+  { 
+    path: '', 
+    component: LandingComponent, 
+    canActivate: [AngularFireAuthGuard], 
+    data: { authGuardPipe: redirectLoggedInToDashboard }
+  },
+
+  { path: 'sign-in', 
+    component: SignInComponent 
+  },
+
+  { path: 'register-user', 
+    component: SignUpComponent 
+  },
+
+  { path: 'dashboard', 
+    component: DashboardComponent,  
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLanding }
+ 
+  },
+
+  { path: 'forgot-password', 
+    component: ForgotPasswordComponent 
+  },
+
+  { path: 'verify-email-address', 
+    component: VerifyEmailComponent 
+  }
 ];
 
 @NgModule({

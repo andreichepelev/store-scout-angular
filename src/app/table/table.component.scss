@@ -1,7 +1,9 @@
 table {
     margin: 1em;
-    width: 95%;
+    width: 98%;
   }
+
+//desktop paddings
 
 .mat-header-cell {
     padding: 2em;
@@ -19,22 +21,64 @@ table {
   padding: 2em;
 }
 
+// mobile paddings
+
+.is-mobile .mat-header-cell {
+  padding: 1em;
+}
+
+.is-mobile .mat-mat-header-row {
+  padding: 1em;
+}
+
+.is-mobile .mat-cell {
+padding: 1em;
+}
+
+.is-mobile .mat-row {
+padding: 1em;
+}
+
+// desktop column width
+
 .mat-column-app {
-  flex: 0 0 15% !important;
-  width: 15% !important
+  flex: 0 0 10%;
+  width: 10%
 }
 
 .mat-column-releaseDate {
-  flex: 0 0 15% !important;
-  width: 15% !important
+  flex: 0 0 10%;
+  width: 10% 
 }
 
 .mat-column-version {
-  flex: 0 0 10% !important;
-  width: 10% !important
+  flex: 0 0 10%;
+  width: 10%
 }
 
 .mat-column-releaseNotes {
-  flex: 0 0 60% !important;
-  width: 60% !important
+  flex: 0 0 70%;
+  width: 70%
 }
+
+// mobile column width
+
+// .is-mobile .mat-column-app {
+//   flex: 0 0 15%;
+//   width: 15%
+// }
+
+// .is-mobile .mat-column-releaseDate {
+//   flex: 0 0 35%;
+//   width: 35%
+// }
+
+// .is-mobile .mat-column-version {
+//   flex: 0 0 10%;
+//   width: 10%
+// }
+
+// .is-mobile .mat-column-releaseNotes {
+//   flex: 0 0 40%;
+//   width: 40%
+// }
