@@ -24,14 +24,13 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LandingComponent } from './landing/landing.component';
 import { LayoutModule } from '@angular/cdk/layout'
-
-
+import { HttpClientModule } from '@angular/common/http'
 
 
 const firebaseConfig = {
@@ -80,7 +79,8 @@ const firebaseConfig = {
     ReactiveFormsModule,
     MatGridListModule,
     MatDialogModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
