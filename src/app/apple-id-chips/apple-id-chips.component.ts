@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 export interface ID {
   name: string;
@@ -18,6 +22,7 @@ export class AppleIdChipsComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
+  iOSServerUrl = 'http://zaibatsu.fyi/api/ios';
   ids: ID[] = [
   ];
 
@@ -36,15 +41,27 @@ export class AppleIdChipsComponent implements OnInit {
     }
   }
 
-  remove(fruit: ID): void {
-    const index = this.ids.indexOf(fruit);
+  remove(id: ID): void {
+    const index = this.ids.indexOf(id);
 
     if (index >= 0) {
       this.ids.splice(index, 1);
     }
   }
 
-  constructor() { }
+  constructor(
+    private http: HttpClient) {
+  }
+
+  sendIOSrequest(ids: ID[]): Observable<ID> {
+    return this.http.post<ID>(this.iOSServerUrl, ids)
+      .pipe(
+        catchError(error => {
+          console.log('Sending data failed')
+          return throwError(error)
+        })
+      );
+  }
 
   ngOnInit(): void {
   }
