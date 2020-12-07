@@ -31,6 +31,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LandingComponent } from './landing/landing.component';
 import { LayoutModule } from '@angular/cdk/layout'
 import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+
 
 
 const firebaseConfig = {
@@ -80,7 +82,8 @@ const firebaseConfig = {
     MatGridListModule,
     MatDialogModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

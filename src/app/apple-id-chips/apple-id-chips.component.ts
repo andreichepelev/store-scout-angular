@@ -7,7 +7,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 export interface ID {
-  name: string;
+  storedAppID: string;
 }
 
 @Component({
@@ -32,7 +32,7 @@ export class AppleIdChipsComponent implements OnInit {
 
     // Add an ID
     if ((value || '').trim()) {
-      this.ids.push({name: value.trim()});
+      this.ids.push({storedAppID: value.trim()});
     }
 
     // Reset the input value
@@ -53,15 +53,28 @@ export class AppleIdChipsComponent implements OnInit {
     private http: HttpClient) {
   }
 
-  sendIOSrequest(ids: ID[]): Observable<ID> {
-    return this.http.post<ID>(this.iOSServerUrl, ids)
+  sendIOSRequest() {
+    const ids = this.ids;
+    // debugger;
+    this.http.post<ID>(this.iOSServerUrl, ids)
       .pipe(
         catchError(error => {
           console.log('Sending data failed')
           return throwError(error)
         })
-      );
+      ).subscribe(ids => console.log(ids));
   }
+
+
+  // $(document).ready(function(){
+  //   var iOSAppID;
+  //   $("form[class=ios]").submit(function(){
+  //     iOSAppID=$("#ios").val();
+  //     $.post("/api/ios",{storedAppID: iOSAppID}, function(data){
+  //     });
+  //   });
+  // });
+
 
   ngOnInit(): void {
   }
