@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start:dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-post-build": "ng build --prod",
+    "start": "node server.js"
   },
   "private": true,
   "dependencies": {
@@ -22,14 +24,15 @@
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
+    "express": "^4.17.1",
+    "firebase": "^7.13.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "firebase": "^7.13.1"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/architect": ">= 0.900 < 0.1100",
-    "@angular-devkit/build-angular": "~0.1001.0",
+    "@angular-devkit/build-angular": "^0.1100.4",
     "@angular/cli": "~10.1.0",
     "@angular/compiler-cli": "~10.1.0",
     "@types/jasmine": "~3.5.0",

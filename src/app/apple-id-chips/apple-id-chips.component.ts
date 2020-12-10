@@ -22,7 +22,7 @@ export class AppleIdChipsComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
-  iOSServerUrl = 'http://www.zaibatsu.fyi/api/ios';
+  iOSServerUrl = 'http://api.zaibatsu.fyi/api/ios';
   ids: ID[] = [
   ];
 
