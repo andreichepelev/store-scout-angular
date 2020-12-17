@@ -32,7 +32,9 @@ import { LandingComponent } from './landing/landing.component';
 import { LayoutModule } from '@angular/cdk/layout'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+const config: SocketIoConfig = { url: 'http://api.zaibatsu.fyi/8000', options: {} };
 
 
 const firebaseConfig = {
@@ -62,6 +64,7 @@ const firebaseConfig = {
     LandingComponent
   ],
   imports: [
+    SocketIoModule.forRoot(config),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, 
     AngularFireAuthModule,
