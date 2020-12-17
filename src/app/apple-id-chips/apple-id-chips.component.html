@@ -3,7 +3,7 @@
     <mat-chip-list #chipList aria-label="app IDs">
       <mat-chip *ngFor="let id of ids" [selectable]="selectable"
                [removable]="removable" (removed)="remove(id)">
-        {{id.storedAppID}}
+               {{id.storedAppID}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input 
