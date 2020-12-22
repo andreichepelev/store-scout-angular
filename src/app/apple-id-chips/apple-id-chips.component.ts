@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
@@ -16,6 +21,9 @@ export interface ID {
   styleUrls: ['./apple-id-chips.component.scss']
 })
 export class AppleIdChipsComponent implements OnInit {
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   visible = true;
   selectable = true;
@@ -49,8 +57,9 @@ export class AppleIdChipsComponent implements OnInit {
   }
 
   constructor(
-    private http: HttpClient) {
-  }
+    private http: HttpClient,
+    private _snackBar: MatSnackBar
+    ) {}
 
   sendIOSRequest() {
     const ids = this.ids;
@@ -64,15 +73,13 @@ export class AppleIdChipsComponent implements OnInit {
       ).subscribe(ids => console.log(ids));
   }
 
-
-  // $(document).ready(function(){
-  //   var iOSAppID;
-  //   $("form[class=ios]").submit(function(){
-  //     iOSAppID=$("#ios").val();
-  //     $.post("/api/ios",{storedAppID: iOSAppID}, function(data){
-  //     });
-  //   });
-  // });
+  openSnackBar() {
+    this._snackBar.open('Zaibatsu bot is fetching data, it will appear in the table below.. Normally it takes 25-30 seconds for each app update', 'Got it', {
+      duration: 10000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
 
 
   ngOnInit(): void {

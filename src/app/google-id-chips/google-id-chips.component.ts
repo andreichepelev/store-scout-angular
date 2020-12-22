@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
@@ -16,6 +21,9 @@ export interface ID {
   styleUrls: ['./google-id-chips.component.scss']
 })
 export class GoogleIdChipsComponent implements OnInit {
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   visible = true;
   selectable = true;
@@ -49,8 +57,9 @@ export class GoogleIdChipsComponent implements OnInit {
   }
 
   constructor(
-    private http: HttpClient) {
-  }
+    private http: HttpClient,
+    private _snackBar: MatSnackBar
+    ) {}
 
   sendAndroidRequest() {
     const ids = this.ids;
@@ -62,6 +71,14 @@ export class GoogleIdChipsComponent implements OnInit {
           return throwError(error)
         })
       ).subscribe(ids => console.log(ids));
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Zaibatsu bot is fetching data, it will appear in the table below. Normally it takes 25-30 seconds for each app update', 'Got it', {
+      duration: 10000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 
   ngOnInit(): void {
