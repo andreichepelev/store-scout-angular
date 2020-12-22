@@ -1,4 +1,4 @@
-export class AppUpdate {
+export interface Report {
     os: String
     storedAppID: String
     appNameText: String

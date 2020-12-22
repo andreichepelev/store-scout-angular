@@ -1,50 +1,35 @@
-import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import io from 'socket.io-client';
-
-const SOCKET_ENDPOINT = 'wss://api.zaibatsu.fyi/'
-
-
-//wss://api.zaibatsu.fyi/socket.io/?EIO=3&transport=websocket&sid=GbLEKJgQEmf7P-vZAAAB
-
-
-//table data model:
-export interface Report {
-  os: string;
-  storedAppID: string;
-  appNameText: string;
-  releaseDateText: string;
-  versionText: string;
-  releaseNotesText: string;
-}
-
-//table data:
-const reportData: Report[] = [
-  {os: 'iOS', storedAppID: 'one123', appNameText: "Skype", releaseDateText: "09.11.20", versionText: "8.66", releaseNotesText: "We're listening to your feedback and working hard to improve Skype. Here's what's new: - Customised message reactions - Raise your hand during a group call - Smart share suggestions - Bug fixes and stability improvements Visit https://go.skype.com/whatsnew for more details."},
-  {os: 'iOS', storedAppID: 'one123', appNameText: "Pinterest", releaseDateText: "12.11.20", versionText: "8.41", releaseNotesText: "Every week, we polish up the Pinterest app. This update includes: - Introducing the Pinterest iMessage extension! Now you can search and share pins with your friends directly in iMessage - Bug fixes - Performance improvements Tell us if you like this latest version at https://help.pinterest.com/contact."},
-  {os: 'iOS', storedAppID: 'one123', appNameText: "Gmail", releaseDateText: "07.11.20", versionText: "6.0.201018", releaseNotesText: "Thanks for using Gmail! This release brings you a new Gmail icon and bug fixes that improve our product to help you do more in one place."},
-  {os: 'iOS', storedAppID: 'one123', appNameText: "Spotify", releaseDateText: "10.11.20", versionText: "8.5.83", releaseNotesText: "We’re always making changes and improvements to Spotify. To make sure you don’t miss a thing, just keep your Updates turned on. Bug fixes and improvements in this version include: - Fixed stability and performance issues"}
-];
+import { ReportsService } from '../services/reports.service'
+import { Report } from '../models/report'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
 
-    socket
+    //table data:
+    reportData: Report[] = [];
+    //{os: '123', storedAppID: 'asd', appNameText: '132', versionText: 'kh', releaseDateText: 'rew', releaseNotesText: 'rrr'}
+    report: Report;
+    sub: Subscription;
+
+    socket;
 
     //table column names
-    col_names: string[] = ['app', 'releaseDate', 'version', 'releaseNotes'];
+    col_names: string[] = ['os','appNameText', 'releaseDateText', 'versionText', 'releaseNotesText'];
     //table data exported:
-    table_data = reportData;
+    table_data = this.reportData;
 
     mobileQuery: MediaQueryList
     private _mobileQueryListener: () => void;
   
     constructor(
       changeDetectorRef: ChangeDetectorRef, 
+      private reportsService: ReportsService,
       media: MediaMatcher
     ) {
       this.mobileQuery = media.matchMedia('(max-width: 760px)');
@@ -52,22 +37,20 @@ export class TableComponent implements OnInit {
       this.mobileQuery.addListener(this._mobileQueryListener);
     }
 
-  ngOnInit(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-    this.setupSocketConnection()
+  ngOnInit() {
+
+    this.sub = this.reportsService.getReport()
+        .subscribe(report => {
+          console.log(report)
+          this.table_data.push(report)
+          this.table_data = this.table_data.map(x => x)
+          console.log(this.table_data)
+        });
   }
 
-  setupSocketConnection() {
-    this.socket = io(SOCKET_ENDPOINT)
-    this.socket.on('UpdateComplete', (report: Report) => {      
-      console.log(report)
-      if (report) {
-        const reportText = JSON.stringify(report)
-        const element = document.createElement('li')
-        element.innerHTML = reportText
-        document.getElementById('reports').appendChild(element)
-      }
-    })
+  ngOnDestroy() {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.sub.unsubscribe();
   }
 
 }
