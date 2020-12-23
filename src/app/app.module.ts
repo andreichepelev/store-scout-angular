@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppleIdChipsComponent } from './apple-id-chips/apple-id-chips.component';
@@ -82,6 +83,7 @@ const firebaseConfig = {
     MatTableModule,
     MatTabsModule,
     MatChipsModule,
+    MatProgressBarModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatGridListModule,

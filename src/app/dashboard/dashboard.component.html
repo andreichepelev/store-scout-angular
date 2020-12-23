@@ -17,7 +17,7 @@
       </span>
     </span> -->
 
-    <button mat-raised-button color="primary"
+    <button mat-button color="primary"
     class='login-button' 
     *ngIf="authService.isLoggedIn==true; else notLoggenIn" 
     (click)="authService.SignOut()">
@@ -41,37 +41,32 @@
   <mat-sidenav mode="side" opened #sidenav 
   [mode]="mobileQuery.matches ? 'over' : 'side'">
     <mat-tab-group>
-      <mat-tab label="AppStore">
+      <mat-tab label="Check stores">
         <br>
         <span class = 'bigger-text'>
-          Paste IDs of the apps you wish to 
-        </span>
-        <br>
-        <span class = 'bigger-text'>
-          monitor into the field below:
+          Paste Apple IDs:
         </span>
         <br>
         <br>
         <p>
         <app-apple-id-chips></app-apple-id-chips>
         </p>
-      </mat-tab>
-  
-      <mat-tab label="PlayStore">
-        
+        <br>
+        <br>
+        <br>
         <br>
         <span class = 'bigger-text'>
-          Paste IDs of the apps you wish to
-        </span>
-        <br>
-        <span class = 'bigger-text'>
-          monitor into the field below:
+          Paste Google IDs:
         </span>
         <br>
         <br>
         <p>
           <app-google-id-chips></app-google-id-chips>
-        </p>    
+        </p>  
+      </mat-tab>
+  
+      <mat-tab label="Subscriptions">
+        <span>Subs</span>  
       </mat-tab>
 
     </mat-tab-group>
@@ -79,7 +74,23 @@
   
   <mat-sidenav-content>
     <!-- <button mat-button (click)="openLogInDialog()">Open dialog</button> -->
-    <h2 class="report-title">Here's what's new:</h2>
+    <mat-grid-list cols="7" rowHeight="4em">
+      <mat-grid-tile colspan="3">
+        <h2 class="report-title">Updates</h2>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="3">
+        <button mat-raised-button color="primary" class="subcription-button">
+          Add to report
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+
     <app-table></app-table>
   </mat-sidenav-content>
 

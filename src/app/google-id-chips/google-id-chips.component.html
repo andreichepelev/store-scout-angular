@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="isLoading" color="primary" mode="indeterminate"></mat-progress-bar>
+
 <form class="android-request-sender-form" #AndroidRequestSender=ngForm (ngSubmit)="sendAndroidRequest()">
   <mat-form-field class="chip-list">
     <mat-chip-list #chipList aria-label="app IDs">
@@ -14,6 +16,16 @@
     </mat-chip-list>
   </mat-form-field>
 
-  <button mat-raised-button type="submit" color="primary" (click)="openSnackBar()">Check what's new</button>
+  <button 
+    mat-stroked-button 
+    type="submit" 
+    color="primary" 
+    (click)="openSnackBar(); filterTable()"
+    class="submit-button"
+  >
+  Check PlayStore
+  </button>
+  <br>
+  <br>
 
 </form>

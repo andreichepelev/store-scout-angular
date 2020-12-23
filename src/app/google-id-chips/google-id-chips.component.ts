@@ -25,6 +25,7 @@ export class GoogleIdChipsComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+  isLoading = false
   visible = true;
   selectable = true;
   removable = true;
@@ -80,6 +81,14 @@ export class GoogleIdChipsComponent implements OnInit {
       verticalPosition: this.verticalPosition,
     });
   }
+
+  filterTable() {
+    this.isLoading = true
+    setTimeout(()=> {
+    this.isLoading = false;
+    }, 2000)
+  }
+  
 
   ngOnInit(): void {
   }
