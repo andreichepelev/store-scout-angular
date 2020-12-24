@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ProgressbarService } from '../services/progressbar.service'
+
 export interface ID {
   storedAppID: string;
 }
@@ -25,7 +27,8 @@ export class GoogleIdChipsComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  isLoading = false
+  //Table component instance for running the progress bar
+
   visible = true;
   selectable = true;
   removable = true;
@@ -59,7 +62,8 @@ export class GoogleIdChipsComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private progressbarService: ProgressbarService
     ) {}
 
   sendAndroidRequest() {
@@ -82,17 +86,12 @@ export class GoogleIdChipsComponent implements OnInit {
     });
   }
 
-  filterTable() {
-    this.isLoading = true
-    setTimeout(()=> {
-    this.isLoading = false;
-    }, 2000)
-  }
-  
-
   ngOnInit(): void {
+    
   }
 
-//<form class="android-request-sender-form" #AndroidRequestSender=ngForm (ngSubmit)="sendAndroidRequest">
+  callProgressBar(){
+    this.progressbarService.sendClickEvent();
+    }
 
 }

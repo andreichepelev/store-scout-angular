@@ -1,4 +1,3 @@
-<mat-progress-bar *ngIf="isLoading" color="primary" mode="indeterminate"></mat-progress-bar>
 
 <form class="android-request-sender-form" #AndroidRequestSender=ngForm (ngSubmit)="sendAndroidRequest()">
   <mat-form-field class="chip-list">
@@ -20,7 +19,7 @@
     mat-stroked-button 
     type="submit" 
     color="primary" 
-    (click)="openSnackBar(); filterTable()"
+    (click)="openSnackBar(); callProgressBar()"
     class="submit-button"
   >
   Check PlayStore

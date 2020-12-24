@@ -1,4 +1,9 @@
-<ul id="reports"></ul>
+
+<mat-grid-list cols="1" rowHeight="2em">
+  <mat-grid-tile colspan="1">
+    <mat-progress-bar *ngIf="isLoading" color="primary" mode="query"></mat-progress-bar>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <table mat-table id='report-table' [dataSource]="table_data" [class.is-mobile]="mobileQuery.matches" >
 

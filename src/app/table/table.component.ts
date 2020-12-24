@@ -3,6 +3,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ReportsService } from '../services/reports.service'
 import { Report } from '../models/report'
 import { Subscription } from 'rxjs'
+import { ProgressbarService } from '../services/progressbar.service'
+
 
 @Component({
   selector: 'app-table',
@@ -10,6 +12,17 @@ import { Subscription } from 'rxjs'
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit, OnDestroy {
+
+    //for the progress bar
+    isLoading = false
+    clickEventsubscription: Subscription;
+
+    showProgressBar() {
+      this.isLoading = true
+      setTimeout(()=> {
+      this.isLoading = false;
+      }, 10000)
+    }
 
     //table data:
     reportData: Report[] = [];
@@ -28,6 +41,7 @@ export class TableComponent implements OnInit, OnDestroy {
     private _mobileQueryListener: () => void;
   
     constructor(
+      private progressbarService: ProgressbarService,
       changeDetectorRef: ChangeDetectorRef, 
       private reportsService: ReportsService,
       media: MediaMatcher
@@ -35,6 +49,9 @@ export class TableComponent implements OnInit, OnDestroy {
       this.mobileQuery = media.matchMedia('(max-width: 760px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
+      this.clickEventsubscription = this.progressbarService.getClickEvent().subscribe(()=>{
+        this.showProgressBar();
+        })
     }
 
   ngOnInit() {
