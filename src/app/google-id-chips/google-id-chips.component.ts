@@ -27,8 +27,6 @@ export class GoogleIdChipsComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  //Table component instance for running the progress bar
-
   visible = true;
   selectable = true;
   removable = true;
@@ -91,7 +89,8 @@ export class GoogleIdChipsComponent implements OnInit {
   }
 
   callProgressBar(){
-    this.progressbarService.sendClickEvent();
+    this.progressbarService.sendClickEvent(this.ids.length);
+    // this.progressbarService.setProgressBarLength.next(this.ids.length)
     }
 
 }

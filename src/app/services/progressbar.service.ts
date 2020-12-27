@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -7,12 +7,15 @@ import { Observable, Subject } from 'rxjs';
 })
 
 export class ProgressbarService {
-  private subject = new Subject<any>();
-  sendClickEvent() {
-    this.subject.next();
+
+  // chipsAmount = new BehaviorSubject<number>(0); 
+
+  clickSubject = new BehaviorSubject<any>(0);
   
+  sendClickEvent(chipsAmount: number) {
+    this.clickSubject.next(chipsAmount);
   }
-  getClickEvent(): Observable<any>{ 
-    return this.subject.asObservable();
-  }
+  // getClickEvent(): Observable<any>{ 
+  //   return this.clickSubject.asObservable();
+  // }
 }

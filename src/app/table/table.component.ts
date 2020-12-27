@@ -15,13 +15,14 @@ export class TableComponent implements OnInit, OnDestroy {
 
     //for the progress bar
     isLoading = false
-    clickEventsubscription: Subscription;
+    clickEventsubscription: Subscription
+    duration: number
 
-    showProgressBar() {
+    showProgressBar(x) {
       this.isLoading = true
       setTimeout(()=> {
       this.isLoading = false;
-      }, 10000)
+      }, x*25000)
     }
 
     //table data:
@@ -49,12 +50,19 @@ export class TableComponent implements OnInit, OnDestroy {
       this.mobileQuery = media.matchMedia('(max-width: 760px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
-      this.clickEventsubscription = this.progressbarService.getClickEvent().subscribe(()=>{
-        this.showProgressBar();
-        })
+
     }
 
   ngOnInit() {
+
+    // this.progressbarService.setProgressBarLength.subscribe(duration=>{
+    //   this.duration = duration;
+    //   })
+
+    this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
+      debugger
+      this.showProgressBar(x);
+    })
 
     this.sub = this.reportsService.getReport()
         .subscribe(report => {
