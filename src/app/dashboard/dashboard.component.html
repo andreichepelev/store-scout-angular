@@ -83,8 +83,8 @@
       </mat-grid-tile>
 
       <mat-grid-tile colspan="3">
-        <button mat-raised-button color="primary" class="subcription-button">
-          Add to report
+        <button *ngIf="doesTableContainApps" mat-raised-button color="primary" class="subcription-button">
+          Subscribe
         </button>
       </mat-grid-tile>
     </mat-grid-list>

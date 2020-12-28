@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { ProgressbarService } from '../services/progressbar.service'
+import { ProgressbarService } from '../services/progressbar/progressbar.service'
 
 export interface ID {
   storedAppID: string;
@@ -77,7 +77,7 @@ export class GoogleIdChipsComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Zaibatsu bot is fetching data, it will appear in the table below. Normally it takes 25-30 seconds for each app update', 'Got it', {
+    this._snackBar.open('Zaibatsu bot is fetching data, it will appear in the table below. Normally it takes from 8 to 30 seconds for each app update', 'Got it', {
       duration: 10000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
@@ -90,7 +90,6 @@ export class GoogleIdChipsComponent implements OnInit {
 
   callProgressBar(){
     this.progressbarService.sendClickEvent(this.ids.length);
-    // this.progressbarService.setProgressBarLength.next(this.ids.length)
-    }
+      }
 
 }

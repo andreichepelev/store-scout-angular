@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ProgressbarService } from '../services/progressbar/progressbar.service'
+
 export interface ID {
   storedAppID: string;
 }
@@ -58,7 +60,8 @@ export class AppleIdChipsComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private progressbarService: ProgressbarService
     ) {}
 
   sendIOSRequest() {
@@ -74,12 +77,16 @@ export class AppleIdChipsComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Zaibatsu bot is fetching data, it will appear in the table below.. Normally it takes 25-30 seconds for each app update', 'Got it', {
+    this._snackBar.open('Zaibatsu bot is fetching data, it will appear in the table below.. Normally it takes from 8 to 30 seconds for each app update', 'Got it', {
       duration: 10000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
   }
+
+  callProgressBar(){
+    this.progressbarService.sendClickEvent(this.ids.length);
+    }
 
 
   ngOnInit(): void {

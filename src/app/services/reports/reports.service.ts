@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import io from 'socket.io-client';
-import { Report } from '../models/report'
+import { Report } from '../../models/report'
 
 const SOCKET_ENDPOINT = 'wss://api.zaibatsu.fyi/'
 

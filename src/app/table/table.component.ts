@@ -1,9 +1,10 @@
 import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ReportsService } from '../services/reports.service'
+import { ReportsService } from '../services/reports/reports.service'
 import { Report } from '../models/report'
 import { Subscription } from 'rxjs'
-import { ProgressbarService } from '../services/progressbar.service'
+import { ProgressbarService } from '../services/progressbar/progressbar.service'
+import { ButtonStateService } from '../services/buttonState/button-state.service'
 
 
 @Component({
@@ -22,7 +23,7 @@ export class TableComponent implements OnInit, OnDestroy {
       this.isLoading = true
       setTimeout(()=> {
       this.isLoading = false;
-      }, x*25000)
+      }, x*10000)
     }
 
     //table data:
@@ -43,6 +44,7 @@ export class TableComponent implements OnInit, OnDestroy {
   
     constructor(
       private progressbarService: ProgressbarService,
+      private buttonStateService: ButtonStateService,
       changeDetectorRef: ChangeDetectorRef, 
       private reportsService: ReportsService,
       media: MediaMatcher
@@ -55,12 +57,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    // this.progressbarService.setProgressBarLength.subscribe(duration=>{
-    //   this.duration = duration;
-    //   })
-
     this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
-      debugger
       this.showProgressBar(x);
     })
 
@@ -70,12 +67,15 @@ export class TableComponent implements OnInit, OnDestroy {
           this.table_data.push(report)
           this.table_data = this.table_data.map(x => x)
           console.log(this.table_data)
+          this.buttonStateService.updateAppsNumber(this.table_data.length)
         });
+  
   }
 
   ngOnDestroy() {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-    this.sub.unsubscribe();
+    this.mobileQuery.removeListener(this._mobileQueryListener)
+    this.sub.unsubscribe()
+    this.clickEventsubscription.unsubscribe()
   }
 
 }
