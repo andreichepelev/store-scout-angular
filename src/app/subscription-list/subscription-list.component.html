@@ -1,0 +1,17 @@
+<mat-selection-list #apps>
+    <mat-list-option *ngFor="let app of appList">
+      {{app}}
+    </mat-list-option>
+</mat-selection-list>
+<br>
+<p>
+  Options selected: {{apps.selectedOptions.selected.length}}
+</p>
+<button 
+class='login-button' 
+    mat-raised-button color="primary">
+    Remove from list
+</button>
+
+
+<!-- (click)="deleteSelected()" -->

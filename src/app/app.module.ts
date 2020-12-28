@@ -22,6 +22,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { MatListModule } from '@angular/material/list';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -35,6 +36,7 @@ import { LayoutModule } from '@angular/cdk/layout'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SubscriptionListComponent } from './subscription-list/subscription-list.component';
 
 const config: SocketIoConfig = { url: 'http://api.zaibatsu.fyi/8000', options: {} };
 
@@ -63,7 +65,8 @@ const firebaseConfig = {
     ForgotPasswordComponent,
     VerifyEmailComponent,
     DashboardComponent,
-    LandingComponent
+    LandingComponent,
+    SubscriptionListComponent
   ],
   imports: [
     SocketIoModule.forRoot(config),
@@ -74,6 +77,7 @@ const firebaseConfig = {
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
+    MatListModule,
     MatIconModule,
     BrowserAnimationsModule,
     MatButtonModule,
