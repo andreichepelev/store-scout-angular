@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
-
+import { ConfirmRemovalComponent } from '../confirm-removal/confirm-removal.component'
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-subscription-list',
@@ -31,7 +32,13 @@ export class SubscriptionListComponent implements OnInit {
     this.appList = diff
   }
 
-  constructor() { }
+  openConfirmationDialog() {
+    this.dialog.open(ConfirmRemovalComponent, {});
+  }
+
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
   }

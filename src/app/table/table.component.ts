@@ -28,6 +28,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
     //table data:
     reportData: Report[] = [];
+    //hardcoded data for testing:
     //{os: '123', storedAppID: 'asd', appNameText: '132', versionText: 'kh', releaseDateText: 'rew', releaseNotesText: 'rrr'}
     report: Report;
     sub: Subscription;

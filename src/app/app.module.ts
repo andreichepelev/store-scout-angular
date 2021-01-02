@@ -37,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SubscriptionListComponent } from './subscription-list/subscription-list.component';
+import { ConfirmRemovalComponent } from './confirm-removal/confirm-removal.component';
 
 const config: SocketIoConfig = { url: 'http://api.zaibatsu.fyi/8000', options: {} };
 
@@ -66,7 +67,8 @@ const firebaseConfig = {
     VerifyEmailComponent,
     DashboardComponent,
     LandingComponent,
-    SubscriptionListComponent
+    SubscriptionListComponent,
+    ConfirmRemovalComponent
   ],
   imports: [
     SocketIoModule.forRoot(config),
