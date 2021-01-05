@@ -62,6 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
 
     this.authService.getToken()
+    // this.authService.getTokenCookie()
 
     // this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
     //   this.showProgressBar(x);

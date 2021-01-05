@@ -5,6 +5,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import * as firebase from "firebase"
+import { CookieService } from 'ngx-cookie-service'
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,14 @@ import * as firebase from "firebase"
 
 export class AuthService {
   userData: any; // Save logged in user data
+  // firebaseToken: string
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
+    public cookieService: CookieService //for putting access token into cookies
   ) {    
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -126,12 +129,28 @@ f
     })
   }
 
-  getToken() {
-    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-      console.log(idToken)
-    }).catch(function(error) {
-      console.log(error)
-    });
+  async getToken() {
+    var fbToken = await firebase.auth().currentUser.getIdToken()
+    console.log(fbToken)
+    this.cookieService.set("idToken", fbToken)
+  }
+
+  // getToken() {
+  //   firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+  //     console.log(idToken)
+  //     return idToken
+  //   }).catch(function(error) {
+  //     console.log(error)
+  //   });
+  // }
+
+  // putTokenIntoCookie() {
+  //   this.firebaseToken = this.getToken()
+  //   this.cookieService.set("idToken", this.firebaseToken)
+  // }
+
+  getTokenCookie() {
+    console.log(this.cookieService.get("idToken"))
   }
 
 }
