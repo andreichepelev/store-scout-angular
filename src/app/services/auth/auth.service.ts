@@ -150,7 +150,8 @@ f
   // }
 
   getTokenCookie() {
-    console.log(this.cookieService.get("idToken"))
+    var tokenCookie = this.cookieService.get("idToken")
+    console.log(`token cookie: ${tokenCookie}`)
   }
 
 }
