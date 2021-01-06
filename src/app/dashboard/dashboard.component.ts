@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.changeButtonState(appsNumber)
     })
 
-    this.authService.getToken()
+    this.authService.putTokenIntoCookie()
     this.authService.getTokenCookie()
 
     // this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{

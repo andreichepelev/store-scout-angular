@@ -129,25 +129,11 @@ f
     })
   }
 
-  async getToken() {
+  async putTokenIntoCookie() {
     var fbToken = await firebase.auth().currentUser.getIdToken()
     console.log(fbToken)
     this.cookieService.set("idToken", fbToken)
   }
-
-  // getToken() {
-  //   firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
-  //     console.log(idToken)
-  //     return idToken
-  //   }).catch(function(error) {
-  //     console.log(error)
-  //   });
-  // }
-
-  // putTokenIntoCookie() {
-  //   this.firebaseToken = this.getToken()
-  //   this.cookieService.set("idToken", this.firebaseToken)
-  // }
 
   getTokenCookie() {
     var tokenCookie = this.cookieService.get("idToken")
