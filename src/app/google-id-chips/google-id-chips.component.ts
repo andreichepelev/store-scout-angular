@@ -67,7 +67,7 @@ export class GoogleIdChipsComponent implements OnInit {
   sendAndroidRequest() {
     const ids = this.ids;
     // debugger;
-    this.http.post<ID>(this.androidServerUrl, ids)
+    this.http.post<ID>(this.androidServerUrl, ids, { withCredentials: true })
       .pipe(
         catchError(error => {
           console.log('Sending data failed')
