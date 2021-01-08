@@ -21,8 +21,8 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
     public cookieService: CookieService //for putting access token into cookies
-  ) {    
-    /* Saving user data in localstorage when 
+  ) {
+    /* Saving user data in localstorage when
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -132,7 +132,7 @@ f
   async putTokenIntoCookie() {
     var fbToken = await firebase.auth().currentUser.getIdToken()
     console.log(fbToken)
-    this.cookieService.set("idToken", fbToken)
+    this.cookieService.set("idToken", fbToken, undefined, '/', '.zaibatsu.fyi')
   }
 
   getTokenCookie() {
