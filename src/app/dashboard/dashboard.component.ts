@@ -55,6 +55,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dialog.open(SignInComponent, {});
   }
 
+  subscribe() {
+    
+  }
+
   ngOnInit() {
 
     this.buttonStateSubscription = this.buttonStateService.subject.subscribe((appsNumber)=>{

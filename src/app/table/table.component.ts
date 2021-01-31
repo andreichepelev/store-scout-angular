@@ -69,6 +69,8 @@ export class TableComponent implements OnInit, OnDestroy {
           this.table_data = this.table_data.map(x => x)
           console.log(this.table_data)
           this.buttonStateService.updateAppsNumber(this.table_data.length)
+          const {storedAppID} = report
+          console.log(storedAppID)
         });
   
   }

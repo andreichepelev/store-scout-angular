@@ -88,7 +88,8 @@
         <button 
           *ngIf="doesTableContainApps" 
           mat-raised-button color="primary" 
-          class="subcription-button">
+          class="subcription-button"
+          (click)="subscribe()">
           Subscribe
         </button>
       </mat-grid-tile>
