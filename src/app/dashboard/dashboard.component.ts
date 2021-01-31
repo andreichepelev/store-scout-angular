@@ -8,6 +8,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
 import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
+import { element } from 'protractor';
 
 
 
@@ -62,7 +63,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   subscribe() {
-    console.log(this.tableData)
+    // console.log(this.tableData)
+    for (var app of this.tableData) {
+      const storedAppIDValue = app.storedAppID
+      console.log(storedAppIDValue)
+    } 
+
   }
 
   ngOnInit() {
