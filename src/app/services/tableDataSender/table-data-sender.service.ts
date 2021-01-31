@@ -6,12 +6,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 
-export class ButtonStateService {
+export class TableDataSenderService {
 
   subject = new BehaviorSubject<any>(0);
   
-  updateAppsNumber(appsNumber: number) {
-    this.subject.next(appsNumber)
+  pushTableData(report: object) {
+    this.subject.next(report)
   }
-
 }

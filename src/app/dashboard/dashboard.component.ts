@@ -4,9 +4,11 @@ import { SignInComponent } from '../sign-in/sign-in.component'
 import { MatDialog } from '@angular/material/dialog'
 import { MediaMatcher } from '@angular/cdk/layout';
 
-//for button state update
+//for button state update and subscriptions
 import { Subscription } from 'rxjs'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
+import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
+
 
 
 @Component({
@@ -19,12 +21,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
   //for button state changing
   doesTableContainApps = false
   buttonStateSubscription: Subscription
+  tableDataSubscription: Subscription
  
   changeButtonState(appsNumber) {
     if (appsNumber > 0) {
       this.doesTableContainApps = true
     }
   }
+
+  tableData = []
 
   //*ngIf="doesTableContainApps"
 
@@ -42,6 +47,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private buttonStateService: ButtonStateService,
+    private tableDataSenderService: TableDataSenderService,
     public dialog: MatDialog,
     changeDetectorRef: ChangeDetectorRef, 
     media: MediaMatcher
@@ -56,13 +62,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   subscribe() {
-    
+    console.log(this.tableData)
   }
 
   ngOnInit() {
 
     this.buttonStateSubscription = this.buttonStateService.subject.subscribe((appsNumber)=>{
       this.changeButtonState(appsNumber)
+    })
+
+    this.tableDataSubscription = this.tableDataSenderService.subject.subscribe((report)=>{
+      this.tableData.push(report)
     })
 
     this.authService.putTokenIntoCookie()
@@ -76,6 +86,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener)
     this.buttonStateSubscription.unsubscribe()
+    this.tableDataSubscription.unsubscribe()
   }
 
 }

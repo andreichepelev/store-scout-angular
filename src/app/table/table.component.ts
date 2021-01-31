@@ -5,6 +5,7 @@ import { Report } from '../models/report'
 import { Subscription } from 'rxjs'
 import { ProgressbarService } from '../services/progressbar/progressbar.service'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
+import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
 
 
 @Component({
@@ -46,6 +47,7 @@ export class TableComponent implements OnInit, OnDestroy {
     constructor(
       private progressbarService: ProgressbarService,
       private buttonStateService: ButtonStateService,
+      private tableDataSenderService: TableDataSenderService,
       changeDetectorRef: ChangeDetectorRef, 
       private reportsService: ReportsService,
       media: MediaMatcher
@@ -69,8 +71,7 @@ export class TableComponent implements OnInit, OnDestroy {
           this.table_data = this.table_data.map(x => x)
           console.log(this.table_data)
           this.buttonStateService.updateAppsNumber(this.table_data.length)
-          const {storedAppID} = report
-          console.log(storedAppID)
+          this.tableDataSenderService.pushTableData(report)
         });
   
   }
