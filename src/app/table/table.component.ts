@@ -37,7 +37,7 @@ export class TableComponent implements OnInit, OnDestroy {
     socket;
 
     //table column names
-    col_names: string[] = ['os','appNameText', 'releaseDateText', 'versionText', 'releaseNotesText'];
+    col_names: string[] = ['os','appNameText', 'releaseDateText', 'versionText', 'releaseNotesText', 'subscribe'];
     //table data exported:
     table_data = this.reportData;
 
