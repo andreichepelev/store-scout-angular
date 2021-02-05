@@ -63,8 +63,8 @@ export class TableComponent implements OnInit, OnDestroy {
       this.mobileQuery.addListener(this._mobileQueryListener);
     }
 
-    subscribeToApp(row) {
-      console.log(`row: ${row}`)
+    subscribeToApp(appNameText) {
+      console.log(`App name: ${appNameText}`)
     }
 
     // sendAndroidRequest() {
