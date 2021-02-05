@@ -12,6 +12,8 @@ import { element } from 'protractor';
 
 
 
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -32,15 +34,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   tableData = []
 
-  //*ngIf="doesTableContainApps"
-
-  // showProgressBar(x) {
-  //   this.isLoading = true
-  //   setTimeout(()=> {
-  //   this.isLoading = false;
-  //   }, x*10000)
-  // }
-
   //for responsiveness
   mobileQuery: MediaQueryList
   private _mobileQueryListener: () => void;
@@ -58,18 +51,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+
   openLogInDialog() {
     this.dialog.open(SignInComponent, {});
   }
 
-  subscribe() {
-    // console.log(this.tableData)
-    for (var app of this.tableData) {
-      const storedAppIDValue = app.storedAppID
-      console.log(storedAppIDValue)
-    } 
+  // Old function for mass subscription (disabled so far, maybe later will be removed)
+  // subscribe() {
+  //   // console.log(this.tableData)
+  //   for (var app of this.tableData) {
+  //     const storedAppIDValue = app.storedAppID
+  //     console.log(storedAppIDValue)
+  //   } 
 
-  }
+  // }
 
   ngOnInit() {
 

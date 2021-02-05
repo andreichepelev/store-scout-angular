@@ -7,6 +7,11 @@ import { ProgressbarService } from '../services/progressbar/progressbar.service'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
 import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
 
+//for sending requests
+import { HttpClient } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-table',
@@ -45,6 +50,7 @@ export class TableComponent implements OnInit, OnDestroy {
     private _mobileQueryListener: () => void;
   
     constructor(
+      private http: HttpClient,
       private progressbarService: ProgressbarService,
       private buttonStateService: ButtonStateService,
       private tableDataSenderService: TableDataSenderService,
@@ -55,8 +61,23 @@ export class TableComponent implements OnInit, OnDestroy {
       this.mobileQuery = media.matchMedia('(max-width: 760px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
-
     }
+
+    subscribeToApp(row, storedAppID) {
+      console.log(row, storedAppID)
+    }
+
+    // sendAndroidRequest() {
+    //   const ids = this.ids;
+    //   // debugger;
+    //   this.http.post<ID>(this.androidServerUrl, ids, { withCredentials: true })
+    //     .pipe(
+    //       catchError(error => {
+    //         console.log('Sending data failed')
+    //         return throwError(error)
+    //       })
+    //     ).subscribe(ids => console.log(ids));
+    // }
 
   ngOnInit() {
 
