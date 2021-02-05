@@ -11,6 +11,9 @@ import { TableDataSenderService } from '../services/tableDataSender/table-data-s
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+export interface ID {
+  storedAppID: string;
+}
 
 
 @Component({
@@ -24,6 +27,8 @@ export class TableComponent implements OnInit, OnDestroy {
     isLoading = false
     clickEventsubscription: Subscription
     duration: number
+    subscribeServerUrl = 'http://api.zaibatsu.fyi/api/subscribe';
+
 
     showProgressBar(x) {
       this.isLoading = true
@@ -64,7 +69,14 @@ export class TableComponent implements OnInit, OnDestroy {
     }
 
     subscribeToApp(storedAppID) {
-      console.log(`App name: ${storedAppID}`)
+      // console.log(`App name: ${storedAppID}`)
+      this.http.post<ID>(this.subscribeServerUrl, storedAppID, {withCredentials: true})
+          .pipe(
+            catchError(error => {
+              console.log('Sending data failed')
+              return throwError(error)
+            })
+          ).subscribe(storedAppID => console.log(`App: ${storedAppID}`));
     }
 
     // sendAndroidRequest() {
