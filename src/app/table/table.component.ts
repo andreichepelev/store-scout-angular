@@ -70,13 +70,22 @@ export class TableComponent implements OnInit, OnDestroy {
 
     subscribeToApp(storedAppID) {
       // console.log(`App name: ${storedAppID}`)
-      this.http.post<ID>(this.subscribeServerUrl, storedAppID, {withCredentials: true})
-          .pipe(
-            catchError(error => {
-              console.log('Sending data failed')
-              return throwError(error)
-            })
-          ).subscribe(storedAppID => console.log(`App: ${storedAppID}`));
+      this.http.post<ID>(
+        this.subscribeServerUrl, 
+        JSON.stringify({storedAppID}), 
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+        .pipe(
+          catchError(error => {
+            console.log('Sending data failed')
+            return throwError(error)
+          })
+        ).subscribe(storedAppID => console.log(`App: ${storedAppID}`));
     }
 
     // sendAndroidRequest() {
