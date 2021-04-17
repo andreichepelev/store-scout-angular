@@ -101,7 +101,7 @@ export class TableComponent implements OnInit, OnDestroy {
     // }
 
   ngOnInit() {
-
+    
     this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
       this.showProgressBar(x);
     })
