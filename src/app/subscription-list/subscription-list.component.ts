@@ -3,6 +3,10 @@ import { MatSelectionList } from '@angular/material/list';
 import { ConfirmRemovalComponent } from '../confirm-removal/confirm-removal.component'
 import { MatDialog } from '@angular/material/dialog'
 
+export interface AppName {
+  appNameText: string;
+}
+
 @Component({
   selector: 'app-subscription-list',
   templateUrl: './subscription-list.component.html',
@@ -24,7 +28,7 @@ export class SubscriptionListComponent implements OnInit {
     }
   }
 
-  appList: string[] = ['Instagram', 'Facebook', 'Telegram', 'WhatsApp', 'GitHub']
+  appList = ['Instagram', 'Facebook', 'Telegram', 'WhatsApp', 'GitHub']
 
   deleteSelected() {
     var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
