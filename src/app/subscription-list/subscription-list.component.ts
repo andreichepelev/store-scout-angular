@@ -29,12 +29,13 @@ export class SubscriptionListComponent implements OnInit {
   }
 
   appList: AppName[] = [{appNameText: 'Facebook'}, {appNameText: 'Instagram'}]
+  stringArray = this.appList.map(item => item.appNameText)
+
 
   deleteSelected() {
     var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
-    var stringArray = this.appList.map(item => item.appNameText)
-    var diff = stringArray.filter(el => !selectedList.includes(el))
-    stringArray = diff
+    var diff = this.stringArray.filter(el => !selectedList.includes(el))
+    this.stringArray = diff
   }
 
   openConfirmationDialog() {
