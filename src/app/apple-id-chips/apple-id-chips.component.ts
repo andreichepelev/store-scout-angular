@@ -67,7 +67,7 @@ export class AppleIdChipsComponent implements OnInit {
   sendIOSRequest() {
     const ids = this.ids;
     // debugger;
-    this.http.post<ID>(this.iOSServerUrl, ids, { withCredentials: false })
+    this.http.post<ID>(this.iOSServerUrl, ids, { withCredentials: true })
       .pipe(
         catchError(error => {
           console.log('Sending data failed')
