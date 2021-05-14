@@ -69,6 +69,7 @@ export class SubscriptionListComponent implements OnInit {
           return throwError(error)
         })
       )
+      console.log('subscription request sent')
   }
 
 
