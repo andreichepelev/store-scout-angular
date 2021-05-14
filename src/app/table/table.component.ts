@@ -88,17 +88,6 @@ export class TableComponent implements OnInit, OnDestroy {
         ).subscribe(storedAppID => console.log(`App: ${{storedAppID}}`));
     }
 
-    // sendAndroidRequest() {
-    //   const ids = this.ids;
-    //   // debugger;
-    //   this.http.post<ID>(this.androidServerUrl, ids, { withCredentials: true })
-    //     .pipe(
-    //       catchError(error => {
-    //         console.log('Sending data failed')
-    //         return throwError(error)
-    //       })
-    //     ).subscribe(ids => console.log(ids));
-    // }
 
   ngOnInit() {
     
