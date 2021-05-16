@@ -5,11 +5,10 @@ import { MatDialog } from '@angular/material/dialog'
 
 //for the API request
 import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-export interface ID {
-  storedAppID: string;
-}
+import { Observable, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 export interface AppName {
   appNameText: string;
@@ -52,9 +51,17 @@ export class SubscriptionListComponent implements OnInit {
     this.dialog.open(ConfirmRemovalComponent, {});
   }
 
+
+  private extractData(res: Response): any {
+    const body = res;
+    console.log('response is: ', body)
+    return body || { };
+  }
+
+
   getApps() {
     console.log('getting apps per user')
-    this.http.get<ID>(
+    this.http.get(
       this.subscribeServerUrl, 
       {
         withCredentials: true,
@@ -64,6 +71,7 @@ export class SubscriptionListComponent implements OnInit {
       }
     )
       .pipe(
+        map(this.extractData),
         catchError(error => {
           console.log('Getting app data failed')
           return throwError(error)
