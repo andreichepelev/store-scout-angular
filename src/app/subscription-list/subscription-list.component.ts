@@ -60,7 +60,7 @@ export class SubscriptionListComponent implements OnInit {
 
 
   getApps() {
-    console.log('getting apps per user')
+    console.log('Getting apps per user')
     this.http.get(
       this.subscribeServerUrl, 
       {
