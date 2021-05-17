@@ -5,14 +5,29 @@ import { MatDialog } from '@angular/material/dialog'
 
 //for the API request
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, filter, switchMap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 export interface AppName {
   appNameText: string;
 }
+
+interface AppUpdate {
+  "user": string[],
+  "_id": string,
+  "storedAppID": string,
+  "appNameText": string,
+  "createdAt": string,
+  "os": string,
+  "releaseDateText": string,
+  "releaseNotesText": string,
+  "updatedAt": string,
+  "versionText": string
+}
+
+type AppUpdateResult = Array<AppUpdate>
 
 @Component({
   selector: 'app-subscription-list',
@@ -53,27 +68,31 @@ export class SubscriptionListComponent implements OnInit {
 
   getApps() {
     console.log('Getting apps per user')
-    this.http.get(
-      this.subscribeServerUrl, 
-      {
-        withCredentials: true,
-        observe: 'body',
-        responseType: 'json'
-      }
-    )
-      .pipe(
-        catchError(error => {
-          console.log('Getting app data failed')
-          return throwError(error)
-        })
-      ).subscribe((data) => {
-        console.log('response is: ', data)
+    this.afAuth.authState.pipe(
+      filter(Boolean),
+      switchMap(() => {
+        return this.http.get<AppUpdateResult>(
+          this.subscribeServerUrl, 
+          {
+            withCredentials: true,
+            observe: 'body',
+            responseType: 'json'
+          }
+        )    
+      }),
+      catchError(error => {
+        console.log('Getting app data failed')
+        return throwError(error)
       })
+    ).subscribe((data) => {
+      console.log('response is: ', data)
+    })
   }
 
   constructor(
     public dialog: MatDialog,
-    private http: HttpClient
+    private http: HttpClient,
+    public afAuth: AngularFireAuth
   ) { }
 
   ngOnInit(): void {
