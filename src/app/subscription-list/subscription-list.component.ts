@@ -51,36 +51,25 @@ export class SubscriptionListComponent implements OnInit {
     this.dialog.open(ConfirmRemovalComponent, {});
   }
 
-
-  private extractData(res: Response): any {
-    const body = res;
-    console.log('response is: ', body)
-    return body || { };
-  }
-
-
   getApps() {
     console.log('Getting apps per user')
     this.http.get(
       this.subscribeServerUrl, 
       {
         withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        observe: 'body',
+        responseType: 'json'
       }
     )
       .pipe(
-        map(this.extractData),
         catchError(error => {
           console.log('Getting app data failed')
           return throwError(error)
         })
-      )
-      console.log('subscription request sent')
+      ).subscribe((data) => {
+        console.log('response is: ', data)
+      })
   }
-
-
 
   constructor(
     public dialog: MatDialog,
