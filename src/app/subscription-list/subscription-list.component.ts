@@ -86,6 +86,7 @@ export class SubscriptionListComponent implements OnInit {
       })
     ).subscribe((data) => {
       console.log('response is: ', data)
+      data.forEach(element => console.log(element.appNameText));
     })
   }
 
