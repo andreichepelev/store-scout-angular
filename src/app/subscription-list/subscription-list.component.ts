@@ -38,38 +38,10 @@ export class SubscriptionListComponent implements OnInit {
 
   @ViewChild('apps') selectionList: MatSelectionList
 
-  areSelected = false
+  //Getting the apps:
 
   subscribeServerUrl = 'http://api.zaibatsu.fyi/api/getapps';
-
-  onSelectionChange() {
-    if (this.selectionList.selectedOptions.selected.length > 0) {
-      this.areSelected = true
-    }
-    else {
-      this.areSelected = false
-    }
-  }
-
   appList = []
-
-  deleteSelected() {
-    var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
-    var diff = this.appList.filter(el => !selectedList.includes(el))
-    this.appList = diff
-  }
-
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-
-  openSnackBar() {
-    this._snackBar.open('You have successfully unsubscribed from the selected apps', 'Got it', {
-      duration: 5000,
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
-  }
-
 
   getApps() {
     console.log('Getting apps per user')
@@ -96,8 +68,49 @@ export class SubscriptionListComponent implements OnInit {
     })
   }
 
+  //Selection:
+
+  areSelected = false
+
+  onSelectionChange() {
+    if (this.selectionList.selectedOptions.selected.length > 0) {
+      this.areSelected = true
+    }
+    else {
+      this.areSelected = false
+    }
+  }
+
+  //Unsubscription:
+
+  deleteSelected() {
+    var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
+    var diff = this.appList.filter(el => !selectedList.includes(el))
+    this.appList = diff
+  }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar() {
+    this._snackBar.open('You have successfully unsubscribed from the selected apps', 'Got it', {
+      duration: 5000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+
+  unsubscribeUrl = 'http://api.zaibatsu.fyi/api/ubsubscribe'
+
   unsubscribeFromSelected() {
-    console.log('smth')
+    var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
+    this.http.post(this.unsubscribeUrl, selectedList, { withCredentials: true })
+      .pipe(
+        catchError(error => {
+          console.log('Sending unsubscription data failed')
+          return throwError(error)
+        })
+      ).subscribe(ids => console.log('sent to unsubscribe: ', selectedList));
   }
 
   constructor(
