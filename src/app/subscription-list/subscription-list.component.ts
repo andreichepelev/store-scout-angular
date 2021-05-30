@@ -10,9 +10,9 @@ import { Observable, throwError } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 
-export interface AppName {
-  appNameText: string;
-}
+// export interface AppName {
+//   appNameText: string;
+// }
 
 interface AppUpdate {
   "user": string[],
@@ -52,14 +52,14 @@ export class SubscriptionListComponent implements OnInit {
     }
   }
 
-  appList: AppName[] = [{appNameText: 'Facebook'}, {appNameText: 'Instagram'}]
-  stringArray = this.appList.map(item => item.appNameText)
+  appList = []
+  // stringArray = this.appList.map(item => item.appNameText)
 
 
   deleteSelected() {
     var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
-    var diff = this.stringArray.filter(el => !selectedList.includes(el))
-    this.stringArray = diff
+    var diff = this.appList.filter(el => !selectedList.includes(el))
+    this.appList = diff
   }
 
   openConfirmationDialog() {
@@ -86,7 +86,8 @@ export class SubscriptionListComponent implements OnInit {
       })
     ).subscribe((data) => {
       console.log('response is: ', data)
-      data.forEach(element => console.log(element.appNameText));
+      data.forEach(element => this.appList.push(element.appNameText));
+      console.log('app array: ', this.appList)
     })
   }
 
