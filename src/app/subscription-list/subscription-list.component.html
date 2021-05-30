@@ -5,7 +5,7 @@
     <br>several apps, then click the Remove button.
 </p>
 <mat-selection-list #apps (selectionChange)="onSelectionChange()">
-    <mat-list-option *ngFor="let app of stringArray" [value]="app">
+    <mat-list-option *ngFor="let app of appList" [value]="app">
       {{app}}
     </mat-list-option>
 </mat-selection-list>
