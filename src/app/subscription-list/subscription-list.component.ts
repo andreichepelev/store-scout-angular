@@ -62,9 +62,7 @@ export class SubscriptionListComponent implements OnInit {
         return throwError(error)
       })
     ).subscribe((data) => {
-      console.log('response is: ', data)
       data.forEach(element => this.appList.push(element.appNameText));
-      console.log('app array: ', this.appList)
     })
   }
 
@@ -100,10 +98,11 @@ export class SubscriptionListComponent implements OnInit {
     });
   }
 
-  unsubscribeUrl = 'http://api.zaibatsu.fyi/api/ubsubscribe'
+  unsubscribeUrl = 'http://api.zaibatsu.fyi/api/unsubscribe'
 
   unsubscribeFromSelected() {
     var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
+    console.log('selectedList: ', selectedList)
     this.http.post(this.unsubscribeUrl, selectedList, { withCredentials: true })
       .pipe(
         catchError(error => {
