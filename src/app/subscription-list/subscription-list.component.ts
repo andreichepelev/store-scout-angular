@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
-import { ConfirmRemovalComponent } from '../confirm-removal/confirm-removal.component'
-import { MatDialog } from '@angular/material/dialog'
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -14,10 +12,6 @@ import { catchError, filter, switchMap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-
-// export interface AppName {
-//   appNameText: string;
-// }
 
 interface AppUpdate {
   "user": string[],
@@ -58,18 +52,12 @@ export class SubscriptionListComponent implements OnInit {
   }
 
   appList = []
-  // stringArray = this.appList.map(item => item.appNameText)
-
 
   deleteSelected() {
     var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
     var diff = this.appList.filter(el => !selectedList.includes(el))
     this.appList = diff
   }
-
-  // openConfirmationDialog() {
-  //   this.dialog.open(ConfirmRemovalComponent, {});
-  // }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -109,7 +97,6 @@ export class SubscriptionListComponent implements OnInit {
   }
 
   constructor(
-    public dialog: MatDialog,
     private http: HttpClient,
     public afAuth: AngularFireAuth,
     private _snackBar: MatSnackBar,
