@@ -6,16 +6,20 @@
     <br>To refresh the list after subscribing to new
     <br>apps, just reload the page.
 </p>
-<mat-selection-list #apps (selectionChange)="onSelectionChange()">
-    <mat-list-option *ngFor="let app of appList" [value]="app">
-      {{app}}
-    </mat-list-option>
-</mat-selection-list>
-<br>
-<button 
-    *ngIf="areSelected"
-    class='remove-button'
-    mat-stroked-button color="primary" 
-    (click)="deleteSelected(); openSnackBar()">
-    Unsubscribe
-</button>
+
+<form class="app-list-form" #AppList=ngForm (ngSubmit)="unsubscribeFromSelected()">
+    <mat-selection-list #apps (selectionChange)="onSelectionChange()">
+        <mat-list-option *ngFor="let app of appList" [value]="app">
+          {{app}}
+        </mat-list-option>
+    </mat-selection-list>
+    <br>
+    <button 
+        *ngIf="areSelected"
+        type="submit" 
+        class='remove-button'
+        mat-stroked-button color="primary" 
+        (click)="deleteSelected(); openSnackBar()">
+        Unsubscribe
+    </button>
+</form>

@@ -96,6 +96,10 @@ export class SubscriptionListComponent implements OnInit {
     })
   }
 
+  unsubscribeFromSelected() {
+    console.log('smth')
+  }
+
   constructor(
     private http: HttpClient,
     public afAuth: AngularFireAuth,
