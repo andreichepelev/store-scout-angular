@@ -83,24 +83,24 @@ export class SubscriptionListComponent implements OnInit {
 
   unsubscribeUrl = 'http://api.zaibatsu.fyi/api/unsubscribe'
 
-  selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
-
   unsubscribeFromSelected() {
-    console.log('selectedList for unsubscribe: ', this.selectedList)
-    this.http.post(this.unsubscribeUrl, this.selectedList, { withCredentials: true })
+    var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
+    console.log('selectedList for unsubscribe: ', selectedList)
+    this.http.post(this.unsubscribeUrl, selectedList, { withCredentials: true })
       .pipe(
         catchError(error => {
           console.log('Sending unsubscription data failed')
           return throwError(error)
         })
-      ).subscribe(ids => console.log('sent to unsubscribe: ', this.selectedList));
-  }
-
-  deleteSelected() {
-    console.log('selectedList for delete selected: ', this.selectedList)
-    var diff = this.appList.filter(el => !this.selectedList.includes(el))
+      ).subscribe(ids => console.log('sent to unsubscribe: ', selectedList));
+    var diff = this.appList.filter(el => !selectedList.includes(el))
     this.appList = diff
   }
+
+  // deleteSelected() {
+  //   console.log('selectedList for delete selected: ', selectedList)
+
+  // }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
