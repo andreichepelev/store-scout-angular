@@ -81,8 +81,23 @@ export class SubscriptionListComponent implements OnInit {
 
   //Unsubscription:
 
+  unsubscribeUrl = 'http://api.zaibatsu.fyi/api/unsubscribe'
+
+  unsubscribeFromSelected() {
+    var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
+    console.log('selectedList for unsubscribe: ', selectedList)
+    this.http.post(this.unsubscribeUrl, selectedList, { withCredentials: true })
+      .pipe(
+        catchError(error => {
+          console.log('Sending unsubscription data failed')
+          return throwError(error)
+        })
+      ).subscribe(ids => console.log('sent to unsubscribe: ', selectedList));
+  }
+
   deleteSelected() {
     var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
+    console.log('selectedList for delete selected: ', selectedList)
     var diff = this.appList.filter(el => !selectedList.includes(el))
     this.appList = diff
   }
@@ -96,20 +111,6 @@ export class SubscriptionListComponent implements OnInit {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });
-  }
-
-  unsubscribeUrl = 'http://api.zaibatsu.fyi/api/unsubscribe'
-
-  unsubscribeFromSelected() {
-    var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)
-    console.log('selectedList: ', selectedList)
-    this.http.post(this.unsubscribeUrl, selectedList, { withCredentials: true })
-      .pipe(
-        catchError(error => {
-          console.log('Sending unsubscription data failed')
-          return throwError(error)
-        })
-      ).subscribe(ids => console.log('sent to unsubscribe: ', selectedList));
   }
 
   constructor(
