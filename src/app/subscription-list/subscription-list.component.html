@@ -2,7 +2,9 @@
     You are subscribed to the apps listed below &
     <br>will receive emails after their new versions
     <br>are released. To unsubscribe, select one or
-    <br>several apps, then click the Remove button.
+    <br>several apps, then click the Unsubscribe button.
+    <br>To refresh the list after subscribing to new
+    <br>apps, just reload the page.
 </p>
 <mat-selection-list #apps (selectionChange)="onSelectionChange()">
     <mat-list-option *ngFor="let app of appList" [value]="app">
@@ -12,9 +14,8 @@
 <br>
 <button 
     *ngIf="areSelected"
-    class='remove-button' 
-    (click)="deleteSelected()"
-    mat-stroked-button color="primary"
-    (click)="openConfirmationDialog()">
-    Remove from list
+    class='remove-button'
+    mat-stroked-button color="primary" 
+    (click)="deleteSelected(); openSnackBar()">
+    Unsubscribe
 </button>

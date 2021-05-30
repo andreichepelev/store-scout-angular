@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
 import { ConfirmRemovalComponent } from '../confirm-removal/confirm-removal.component'
 import { MatDialog } from '@angular/material/dialog'
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 //for the API request
 import { HttpClient } from '@angular/common/http';
@@ -62,9 +67,21 @@ export class SubscriptionListComponent implements OnInit {
     this.appList = diff
   }
 
-  openConfirmationDialog() {
-    this.dialog.open(ConfirmRemovalComponent, {});
+  // openConfirmationDialog() {
+  //   this.dialog.open(ConfirmRemovalComponent, {});
+  // }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar() {
+    this._snackBar.open('You have successfully unsubscribed from the selected apps', 'Got it', {
+      duration: 5000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
+
 
   getApps() {
     console.log('Getting apps per user')
@@ -94,7 +111,8 @@ export class SubscriptionListComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private http: HttpClient,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
