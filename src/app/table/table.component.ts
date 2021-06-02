@@ -68,11 +68,11 @@ export class TableComponent implements OnInit, OnDestroy {
       this.mobileQuery.addListener(this._mobileQueryListener);
     }
 
-    subscribeToApp(storedAppID) {
+    subscribeToApp(appNameText) {
       // console.log(`App name: ${storedAppID}`)
       this.http.post<ID>(
         this.subscribeServerUrl, 
-        JSON.stringify({storedAppID}), 
+        JSON.stringify({appNameText}), 
         {
           withCredentials: true,
           headers: {
@@ -85,7 +85,7 @@ export class TableComponent implements OnInit, OnDestroy {
             console.log('Sending data failed')
             return throwError(error)
           })
-        ).subscribe(storedAppID => console.log(`App: ${{storedAppID}}`));
+        ).subscribe(appNameText => console.log(`App: ${{appNameText}}`));
     }
 
 

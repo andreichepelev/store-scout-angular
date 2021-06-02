@@ -97,10 +97,6 @@ export class SubscriptionListComponent implements OnInit {
     this.appList = diff
   }
 
-  // deleteSelected() {
-  //   console.log('selectedList for delete selected: ', selectedList)
-
-  // }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
