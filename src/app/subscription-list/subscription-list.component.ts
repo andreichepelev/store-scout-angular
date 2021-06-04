@@ -62,7 +62,7 @@ export class SubscriptionListComponent implements OnInit {
         return throwError(error)
       })
     ).subscribe((data) => {
-      data.forEach(element => this.appList.push(element.appNameText));
+      data.forEach(element => this.appList.push(element));
     })
   }
 

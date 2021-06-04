@@ -3,14 +3,14 @@
     <br>will receive emails after their new versions
     <br>are released. To unsubscribe, select one or
     <br>several apps, then click the Unsubscribe button.
-    <br>To refresh the list after subscribing to new
-    <br>apps, just reload the page.
+    <br>To refresh the list after subscribing or 
+    <br>unsubscribing to new apps, just reload the page.
 </p>
 
 <form class="app-list-form" #AppList=ngForm (ngSubmit)="unsubscribeFromSelected()">
     <mat-selection-list #apps (selectionChange)="onSelectionChange()">
         <mat-list-option *ngFor="let app of appList" [value]="app">
-          {{app}}
+          {{app.appNameText}}
         </mat-list-option>
     </mat-selection-list>
     <br>
