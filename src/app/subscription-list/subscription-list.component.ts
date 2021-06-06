@@ -102,7 +102,7 @@ export class SubscriptionListComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   openSnackBar() {
-    this._snackBar.open('You have successfully unsubscribed from the selected apps', 'Got it', {
+    this._snackBar.open('You have successfully unsubscribed from selected apps', 'Got it', {
       duration: 5000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
