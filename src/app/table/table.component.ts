@@ -31,6 +31,10 @@ export class TableComponent implements OnInit, OnDestroy {
     horizontalPosition: MatSnackBarHorizontalPosition = 'center';
     verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+
+    //for the Subscription button
+    notSubscribed = true
+
     //for the progress bar
     isLoading = false
     clickEventsubscription: Subscription
@@ -86,8 +90,8 @@ export class TableComponent implements OnInit, OnDestroy {
     }
 
     openFailSnackBar() {
-      this._snackBar.open(`Couldn't subscribe to app. You are already subscribed to it or have 5 or more subscriptions.`, 'Got it', {
-        duration: 5000,
+      this._snackBar.open(`Couldn't subscribe to app. You are subscribed to it or have 5 subscriptions already.`, 'Got it', {
+        duration: 6000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
       });
@@ -110,6 +114,7 @@ export class TableComponent implements OnInit, OnDestroy {
           catchError(error => {
             console.log('User has more than 5 subscriptions or already subscribed to this app')
             this.openFailSnackBar()
+            this.notSubscribed = false
             return throwError(error)
           })
         ).subscribe(appNameText => this.openSuccessSnackBar(appNameText));
