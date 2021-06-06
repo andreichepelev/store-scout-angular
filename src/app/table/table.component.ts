@@ -6,6 +6,11 @@ import { Subscription } from 'rxjs'
 import { ProgressbarService } from '../services/progressbar/progressbar.service'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
 import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 //for sending requests
 import { HttpClient } from '@angular/common/http';
@@ -22,6 +27,9 @@ export interface ID {
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit, OnDestroy {
+
+    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
 
     //for the progress bar
     isLoading = false
@@ -56,6 +64,7 @@ export class TableComponent implements OnInit, OnDestroy {
   
     constructor(
       private http: HttpClient,
+      private _snackBar: MatSnackBar,
       private progressbarService: ProgressbarService,
       private buttonStateService: ButtonStateService,
       private tableDataSenderService: TableDataSenderService,
@@ -67,6 +76,23 @@ export class TableComponent implements OnInit, OnDestroy {
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
     }
+
+    openSuccessSnackBar(app) {
+      this._snackBar.open(`Successfully subscribed to ${app}!`, 'Got it', {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
+    }
+
+    openFailSnackBar() {
+      this._snackBar.open(`Couldn't subscribe to app. You are already subscribed to it or have 5 or more subscriptions.`, 'Got it', {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
+    }
+
 
     subscribeToApp(appNameText) {
       // console.log(`App name: ${storedAppID}`)
@@ -82,10 +108,11 @@ export class TableComponent implements OnInit, OnDestroy {
       )
         .pipe(
           catchError(error => {
-            console.log('Sending data failed')
+            console.log('User has more than 5 subscriptions or already subscribed to this app')
+            this.openFailSnackBar()
             return throwError(error)
           })
-        ).subscribe(appNameText => console.log(`App: ${{appNameText}}`));
+        ).subscribe(appNameText => this.openSuccessSnackBar(appNameText));
     }
 
 
