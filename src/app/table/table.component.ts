@@ -78,8 +78,8 @@ export class TableComponent implements OnInit, OnDestroy {
       this.mobileQuery.addListener(this._mobileQueryListener);
     }
 
-    openSuccessSnackBar(app) {
-      this._snackBar.open(`Successfully subscribed to the ${app}! Refresh the page to see this app in the subcription list.`, 'Got it', {
+    openSuccessSnackBar() {
+      this._snackBar.open(`Successfully subscribed to the app! Refresh the page to see this app in the subcription list.`, 'Got it', {
         duration: 5000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
@@ -113,7 +113,7 @@ export class TableComponent implements OnInit, OnDestroy {
             this.openFailSnackBar()
             return throwError(error)
           })
-        ).subscribe(appNameText => this.openSuccessSnackBar(JSON.stringify({appNameText})));
+        ).subscribe(appNameText => this.openSuccessSnackBar());
     }
 
 
