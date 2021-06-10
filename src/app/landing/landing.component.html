@@ -18,7 +18,7 @@
       <button 
       mat-raised-button color="primary"
       (click)="openLogInDialog()">
-        Try for free
+        Get app updates
       </button>
     </ng-template>
 
@@ -168,30 +168,33 @@
             <mat-grid-tile colspan="1">
                 <p class = "text-block">
                     <span class = 'bigger-text'>
-                        Get the latest mobile app
+                        Tailor your subscription list
                     </span>
                     <br>
                     <span class = 'bigger-text'>
-                        updates for free in <span>1 click</span>
+                        of both <span>iOS and Android</span> apps
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; Select apps you’re interested in and get their updates
+                        &#9679; Copy and paste URLs of the apps' store pages
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; Zaibatsu saves this list so you can get back later and generate a new update report <span>literally</span> in 1 click
+                        &#9679; Start the Scout and get the update in less than <span>30 seconds</span>
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; This app is <span>free forever</span>
+                        &#9679; Subscribe to apps you are interested in
                     </span>
                     <br>
-                    <button mat-raised-button color="primary" class = "block-button">
-                        Try now!
+                    <br>
+                    <button mat-raised-button color="primary" 
+                        *ngIf="authService.isLoggedIn==false;" 
+                        (click)="openLogInDialog()">
+                        Try now, it's free
                     </button>
                 </p>
             </mat-grid-tile>
@@ -204,30 +207,33 @@
         <br>
         <p class = "text-block">
             <span class = 'bigger-text-mobile'>
-                Get the latest mobile app
+                Tailor your subscription list
             </span>
             <br>
             <span class = 'bigger-text-mobile'>
-                updates for free in <span>1 click</span>
+                of both <span>iOS and Android</span> apps
             </span>
             <br>
             <br>
             <span class = "smaller-text-mobile">
-                &#9679; Select apps you’re interested in and get their updates
+                &#9679; Copy and paste URLs of the apps' store pages
             </span>
             <br>
             <br>
             <span class = "smaller-text-mobile">
-                &#9679; Zaibatsu saves this list so you can get back later and generate a new update report <span>literally</span> in 1 click
+                &#9679; Start the Scout and get the update in less than <span>30 seconds</span>
             </span>
             <br>
             <br>
             <span class = "smaller-text-mobile">
-                &#9679; This app is <span>free forever</span>
+                &#9679; Subscribe to apps you are interested in
             </span>
             <br>
-            <button mat-raised-button color="primary" class = "block-button">
-                Try now!
+            <br>
+            <button mat-raised-button color="primary" 
+                *ngIf="authService.isLoggedIn==false;" 
+                (click)="openLogInDialog()">
+                Try now, it's free
             </button>
             <br>
         </p>
@@ -247,33 +253,24 @@
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; App Store and Play Store updates of apps of your choice with release notes
+                        &#9679; Apps you subscribed to are checked on the stores <span>every day</span>
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; Stores are checked 3 times a day sending you updates <span>immediately</span>
+                        &#9679; You get emails with new release notes immediately
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; Leave your email to be among <span>the first</span> to try it!
+                        &#9679; No need to manually check the stores and compare versions
                     </span>
                     <br>
                     <br>
-                    <mat-form-field class="full-width">
-                        <mat-label>Email</mat-label>
-                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                          Please enter a valid email address
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                          Email is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                    <br>
-                    <button mat-raised-button color="primary" class = "block-button">
-                        Keep me posted
+                    <button mat-raised-button color="primary" 
+                        *ngIf="authService.isLoggedIn==false;" 
+                        (click)="openLogInDialog()">
+                        Start getting updates today
                     </button>
                 </p>
             </mat-grid-tile>
@@ -298,33 +295,24 @@
                     <br>
                     <br>
                     <span class = "smaller-text-mobile">
-                        &#9679; App Store and Play Store updates of apps of your choice with release notes
+                        &#9679; Apps you subscribed to are checked on the stores <span>every day</span>
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text-mobile">
-                        &#9679; Stores are checked 3 times a day sending you updates <span>immediately</span>
+                        &#9679; You get emails with new release notes immediately
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text-mobile">
-                        &#9679; Leave your email below to be among <span>the first</span> to try it!
+                        &#9679; No need to manually check the stores and compare versions
                     </span>
                     <br>
                     <br>
-                    <mat-form-field class="full-width">
-                        <mat-label>Email</mat-label>
-                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                          Please enter a valid email address
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                          Email is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                    <br>
-                    <button mat-raised-button color="primary" class = "block-button">
-                        Keep me posted
+                    <button mat-raised-button color="primary" 
+                        *ngIf="authService.isLoggedIn==false;" 
+                        (click)="openLogInDialog()">
+                        Start getting updates today
                     </button>
                 </p>
                 <br>
@@ -342,42 +330,27 @@
             <mat-grid-tile colspan="1">
                 <p class = "text-block">
                     <span class = 'bigger-text'>
-                        <span>Handmade</span> UX reports on
+                        What about <span>web apps</span> monitoring?
                     </span>
                     <br>
                     <span class = 'bigger-text'>
-                        competitor updates to your inbox
+                        That's also possible!
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; We write <span>custom scripts</span> to monitor websites, web and mobile apps
+                        &#9679; We write custom scripts to monitor websites and web apps
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; We analyze any changes detected, so you get <span>concentrated information</span> instead of raw feed
+                        &#9679; Changes detected are analyzed, so you get <span>concentrated information</span> instead of raw feed
                     </span>
                     <br>
                     <br>
                     <span class = "smaller-text">
-                        &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to learn more
+                        &#9679; Reach out to <a class='link' href="mailto:hi@zaibatsu.fyi">hi@zaibatsu.fyi</a> to get a quote
                     </span>
-                    <br>
-                    <mat-form-field class="full-width">
-                        <mat-label>Email</mat-label>
-                        <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                          Please enter a valid email address
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                          Email is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                    <br>
-                    <button mat-raised-button color="primary" class = "block-button">
-                        Tell me more
-                    </button>
                 </p>
             </mat-grid-tile>
         </mat-grid-list>
@@ -393,46 +366,28 @@
         <br>
         <p class = "text-block">
             <span class = 'bigger-text-mobile'>
-                <span>Handmade</span> UX reports on
+                What about <span>web apps</span> monitoring?
             </span>
             <br>
             <span class = 'bigger-text-mobile'>
-                competitor updates to your inbox
+                That's also possible!
             </span>
             <br>
             <br>
             <span class = "smaller-text-mobile">
-                &#9679; We write <span>custom scripts</span> to monitor websites, web and mobile apps
+                &#9679; We write custom scripts to monitor websites and web apps
             </span>
             <br>
             <br>
             <span class = "smaller-text-mobile">
-                &#9679; We analyze any changes detected, so you get <span>concentrated information</span> instead of raw feed
+                &#9679; Changes detected are analyzed, so you get <span>concentrated information</span> instead of raw feed
             </span>
             <br>
             <br>
             <span class = "smaller-text-mobile">
-                &#9679; Reach out to <span>hi@zaibatsu.fyi</span> or leave your email to learn more
+                &#9679; Reach out to <a class='link' href="mailto:hi@zaibatsu.fyi">hi@zaibatsu.fyi</a> to get a quote
             </span>
-            <br>
-            <br>
-            <mat-form-field class="full-width">
-                <mat-label>Email</mat-label>
-                <input matInput class="formControl" [formControl]="emailFormControl" placeholder="name@domain.com" #userEmail>
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                    Please enter a valid email address
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
-                    Email is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <br>
-            <button mat-raised-button color="primary" class = "block-button">
-                Tell me more
-            </button>
         </p>
-        <br>
-        <br>
     </div>
 
 
