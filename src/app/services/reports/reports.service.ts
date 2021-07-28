@@ -16,7 +16,7 @@ export class ReportsService {
   constructor() {}
 
    getReport() : Observable<Report> {
-    this.socket = io(SOCKET_ENDPOINT)
+    this.socket = io(SOCKET_ENDPOINT, {withCredentials: true})
 
     this.socket.on('UpdateComplete', (report: Report) => {
       this.observer.next(report);
