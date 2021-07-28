@@ -44,7 +44,7 @@
       <mat-tab label="Check stores">
         <br>
         <span class = 'bigger-text'>
-          Paste Apple IDs:
+          Paste Apple URLs:
         </span>
         <br>
         <br>
@@ -56,13 +56,26 @@
         <br>
         <br>
         <span class = 'bigger-text'>
-          Paste Google IDs:
+          Paste Google URLs:
         </span>
         <br>
         <br>
         <p>
           <app-google-id-chips></app-google-id-chips>
-        </p>  
+        </p>
+        <br>
+        <br>
+        <div class = "myCustomHeading">
+          <mat-icon>play_arrow</mat-icon>
+          <a href="https://youtu.be/uCZMeQ2X6Wo" target="_blank">How-to video explainer</a>  
+        </div>
+        <div class = "myCustomHeading">
+          <mat-icon>help_outline</mat-icon>
+          <a class='link' href="mailto:andrei@zaibatsu.fyi">andrei@zaibatsu.fyi</a> 
+        </div>
+
+        
+
       </mat-tab>
   
       <mat-tab label="Subscriptions">
@@ -85,12 +98,14 @@
       </mat-grid-tile>
 
       <mat-grid-tile colspan="3">
-        <button 
+        <!-- mass subscription button, disabled so far, maybe needs to be removed later -->
+        <!-- <button 
           *ngIf="doesTableContainApps" 
           mat-raised-button color="primary" 
-          class="subcription-button">
+          class="subcription-button"
+          (click)="subscribe()">
           Subscribe
-        </button>
+        </button> -->
       </mat-grid-tile>
     </mat-grid-list>
 

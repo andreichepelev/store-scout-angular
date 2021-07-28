@@ -88,3 +88,29 @@
     position: absolute;
     right: 0; 
   }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #F4DD53;
+    padding-bottom: 2em;
+    position:absolute;
+    padding-top:2px
+  }
+
+  .myCustomHeading {
+    position:relative;
+    padding-top:4px;
+  }
+
+  a:hover {
+    color: yellow
+  }
+
+  mat-icon {
+    color: #F4DD53;
+    position:relative;
+    padding-right:4px
+  }
+
+

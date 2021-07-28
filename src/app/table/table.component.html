@@ -32,6 +32,19 @@
       <td mat-cell *matCellDef="let report">{{report.releaseNotesText}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="subscribe">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let report">
+        <button
+        mat-stroked-button 
+        color="primary" 
+        class="subcription-button"
+        (click)="subscribeToApp(report.appNameText)">
+        Subscribe
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="col_names"></tr>
     <tr mat-row *matRowDef="let row; columns: col_names;"></tr>
   </table>

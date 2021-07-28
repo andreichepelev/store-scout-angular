@@ -4,9 +4,14 @@ import { SignInComponent } from '../sign-in/sign-in.component'
 import { MatDialog } from '@angular/material/dialog'
 import { MediaMatcher } from '@angular/cdk/layout';
 
-//for button state update
+//for button state update and subscriptions
 import { Subscription } from 'rxjs'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
+import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
+import { element } from 'protractor';
+
+
+
 
 
 @Component({
@@ -19,6 +24,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   //for button state changing
   doesTableContainApps = false
   buttonStateSubscription: Subscription
+  tableDataSubscription: Subscription
  
   changeButtonState(appsNumber) {
     if (appsNumber > 0) {
@@ -26,14 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  //*ngIf="doesTableContainApps"
-
-  // showProgressBar(x) {
-  //   this.isLoading = true
-  //   setTimeout(()=> {
-  //   this.isLoading = false;
-  //   }, x*10000)
-  // }
+  tableData = []
 
   //for responsiveness
   mobileQuery: MediaQueryList
@@ -42,6 +41,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private buttonStateService: ButtonStateService,
+    private tableDataSenderService: TableDataSenderService,
     public dialog: MatDialog,
     changeDetectorRef: ChangeDetectorRef, 
     media: MediaMatcher
@@ -51,14 +51,29 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+
   openLogInDialog() {
     this.dialog.open(SignInComponent, {});
   }
+
+  // Old function for mass subscription (disabled so far, maybe later will be removed)
+  // subscribe() {
+  //   // console.log(this.tableData)
+  //   for (var app of this.tableData) {
+  //     const storedAppIDValue = app.storedAppID
+  //     console.log(storedAppIDValue)
+  //   } 
+
+  // }
 
   ngOnInit() {
 
     this.buttonStateSubscription = this.buttonStateService.subject.subscribe((appsNumber)=>{
       this.changeButtonState(appsNumber)
+    })
+
+    this.tableDataSubscription = this.tableDataSenderService.subject.subscribe((report)=>{
+      this.tableData.push(report)
     })
 
     this.authService.putTokenIntoCookie()
@@ -72,6 +87,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener)
     this.buttonStateSubscription.unsubscribe()
+    this.tableDataSubscription.unsubscribe()
   }
 
 }

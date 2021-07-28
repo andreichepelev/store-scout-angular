@@ -5,6 +5,20 @@ import { Report } from '../models/report'
 import { Subscription } from 'rxjs'
 import { ProgressbarService } from '../services/progressbar/progressbar.service'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
+import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+
+//for sending requests
+import { HttpClient } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+export interface ID {
+  storedAppID: string;
+}
 
 
 @Component({
@@ -14,10 +28,16 @@ import { ButtonStateService } from '../services/buttonState/button-state.service
 })
 export class TableComponent implements OnInit, OnDestroy {
 
+    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+
     //for the progress bar
     isLoading = false
     clickEventsubscription: Subscription
     duration: number
+    subscribeServerUrl = 'http://api.zaibatsu.fyi/api/subscribe';
+
 
     showProgressBar(x) {
       this.isLoading = true
@@ -36,7 +56,7 @@ export class TableComponent implements OnInit, OnDestroy {
     socket;
 
     //table column names
-    col_names: string[] = ['os','appNameText', 'releaseDateText', 'versionText', 'releaseNotesText'];
+    col_names: string[] = ['os','appNameText', 'releaseDateText', 'versionText', 'releaseNotesText', 'subscribe'];
     //table data exported:
     table_data = this.reportData;
 
@@ -44,8 +64,11 @@ export class TableComponent implements OnInit, OnDestroy {
     private _mobileQueryListener: () => void;
   
     constructor(
+      private http: HttpClient,
+      private _snackBar: MatSnackBar,
       private progressbarService: ProgressbarService,
       private buttonStateService: ButtonStateService,
+      private tableDataSenderService: TableDataSenderService,
       changeDetectorRef: ChangeDetectorRef, 
       private reportsService: ReportsService,
       media: MediaMatcher
@@ -53,11 +76,49 @@ export class TableComponent implements OnInit, OnDestroy {
       this.mobileQuery = media.matchMedia('(max-width: 760px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
-
     }
 
-  ngOnInit() {
+    openSuccessSnackBar() {
+      this._snackBar.open(`Successfully subscribed to the app! Refresh the page to see this app in the subcription list.`, 'Got it', {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
+    }
 
+    openFailSnackBar() {
+      this._snackBar.open(`Couldn't subscribe to app. You are subscribed to it or have 5 subscriptions already.`, 'Got it', {
+        duration: 6000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
+    }
+
+
+    subscribeToApp(appNameText) {
+      // console.log(`App name: ${storedAppID}`)
+      this.http.post<ID>(
+        this.subscribeServerUrl, 
+        JSON.stringify({appNameText}), 
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+        .pipe(
+          catchError(error => {
+            console.log('User has more than 5 subscriptions or already subscribed to this app')
+            this.openFailSnackBar()
+            return throwError(error)
+          })
+        ).subscribe(appNameText => this.openSuccessSnackBar());
+    }
+
+
+  ngOnInit() {
+    
     this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
       this.showProgressBar(x);
     })
@@ -69,6 +130,7 @@ export class TableComponent implements OnInit, OnDestroy {
           this.table_data = this.table_data.map(x => x)
           console.log(this.table_data)
           this.buttonStateService.updateAppsNumber(this.table_data.length)
+          this.tableDataSenderService.pushTableData(report)
         });
   
   }
