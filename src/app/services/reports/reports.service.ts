@@ -20,8 +20,8 @@ export class ReportsService {
       tap((state) => console.log('[ReportService] authSate', state)),
       filter((state) => state),
       map(() => {
-        console.log('[ReportService] Creating new socket')
-        return io(SOCKET_ENDPOINT);
+        console.log('[ReportService] Creating new socket, token')
+        return io(SOCKET_ENDPOINT, {withCredentials: true});
       }),
       shareReplay(1)
     );
@@ -29,8 +29,6 @@ export class ReportsService {
 
   getReport(): Observable<Report> {
     console.log('[ReportService] getReport');
-
-    console.debug('ReportService#getReport');
     return this.socket.pipe(
       switchMap((socket) => {
         console.log('[ReportService] Subscribing to events')
