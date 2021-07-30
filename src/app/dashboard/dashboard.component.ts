@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   doesTableContainApps = false
   buttonStateSubscription: Subscription
   tableDataSubscription: Subscription
- 
+
   changeButtonState(appsNumber) {
     if (appsNumber > 0) {
       this.doesTableContainApps = true
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private buttonStateService: ButtonStateService,
     private tableDataSenderService: TableDataSenderService,
     public dialog: MatDialog,
-    changeDetectorRef: ChangeDetectorRef, 
+    changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 760px)');
@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   //   for (var app of this.tableData) {
   //     const storedAppIDValue = app.storedAppID
   //     console.log(storedAppIDValue)
-  //   } 
+  //   }
 
   // }
 
@@ -76,8 +76,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.tableData.push(report)
     })
 
-    this.authService.putTokenIntoCookie()
-    this.authService.getTokenCookie()
+    // this.authService.putTokenIntoCookie()
+    // this.authService.getTokenCookie()
 
     // this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
     //   this.showProgressBar(x);

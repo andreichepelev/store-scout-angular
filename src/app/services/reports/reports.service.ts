@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { Observable, Observer } from 'rxjs';
+import { Observable } from 'rxjs';
+import { filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import io from 'socket.io-client';
 import { Report } from '../../models/report';
+import { AuthService } from '../auth/auth.service';
 
 const SOCKET_ENDPOINT = 'wss://api.zaibatsu.fyi/';
 
@@ -10,40 +11,35 @@ const SOCKET_ENDPOINT = 'wss://api.zaibatsu.fyi/';
   providedIn: 'root',
 })
 export class ReportsService {
-  private socket;
-  observer: Observer<any>;
+  socket: Observable<any>;
 
   constructor(
-    public cookieService: CookieService //for putting access token into cookies
-  ) {}
+    public authService: AuthService //for putting access token into cookies
+  ) {
+    this.socket = this.authService.authState.pipe(
+      tap((state) => console.log('[ReportService] authSate', state)),
+      filter((state) => state),
+      map(() => {
+        console.log('[ReportService] Creating new socket')
+        return io(SOCKET_ENDPOINT);
+      }),
+      shareReplay(1)
+    );
+  }
 
   getReport(): Observable<Report> {
-    const token = this.cookieService.get('idToken')
-    console.debug('Connection to Socket.IO with token', token)
-    this.socket = io(SOCKET_ENDPOINT, {
-      query: {
-        token
-      }
-    });
+    console.log('[ReportService] getReport');
 
-    this.socket.on('UpdateComplete', (report: Report) => {
-      this.observer.next(report);
-    });
-
-    return this.createObservable();
-  }
-  createObservable(): Observable<Report> {
-    return new Observable((observer) => {
-      this.observer = observer;
-    });
-  }
-
-  private handleError(error) {
-    console.error('server error:', error);
-    if (error.error instanceof Error) {
-      let errMessage = error.error.message;
-      return Observable.throw(errMessage);
-    }
-    return Observable.throw(error || 'Socket.io server error');
+    console.debug('ReportService#getReport');
+    return this.socket.pipe(
+      switchMap((socket) => {
+        console.log('[ReportService] Subscribing to events')
+        return new Observable<Report>((subscriber) => {
+          socket.on('UpdateComplete', (report: Report) => {
+            subscriber.next(report);
+          });
+        });
+      })
+    );
   }
 }
