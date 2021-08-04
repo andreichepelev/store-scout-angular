@@ -40,7 +40,7 @@ export class SubscriptionListComponent implements OnInit {
 
   //Getting the apps:
 
-  subscribeServerUrl = 'http://api.zaibatsu.fyi/api/getapps';
+  subscribeServerUrl = 'https://api.zaibatsu.fyi/api/getapps';
   appList = []
 
   getApps() {
@@ -81,7 +81,7 @@ export class SubscriptionListComponent implements OnInit {
 
   //Unsubscription:
 
-  unsubscribeUrl = 'http://api.zaibatsu.fyi/api/unsubscribe'
+  unsubscribeUrl = 'https://api.zaibatsu.fyi/api/unsubscribe'
 
   unsubscribeFromSelected() {
     var selectedList: string[] = this.selectionList.selectedOptions.selected.map(s => s.value)

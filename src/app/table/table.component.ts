@@ -36,7 +36,7 @@ export class TableComponent implements OnInit, OnDestroy {
     isLoading = false
     clickEventsubscription: Subscription
     duration: number
-    subscribeServerUrl = 'http://api.zaibatsu.fyi/api/subscribe';
+    subscribeServerUrl = 'https://api.zaibatsu.fyi/api/subscribe';
 
 
     showProgressBar(x) {

@@ -32,7 +32,7 @@ export class AppleIdChipsComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
-  iOSServerUrl = 'http://api.zaibatsu.fyi/api/ios';
+  iOSServerUrl = 'https://api.zaibatsu.fyi/api/ios';
   ids: ID[] = [];
 
   add(event: MatChipInputEvent): void {

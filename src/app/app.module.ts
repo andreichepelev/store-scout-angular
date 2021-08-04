@@ -37,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SubscriptionListComponent } from './subscription-list/subscription-list.component';
-const config: SocketIoConfig = { url: 'http://api.zaibatsu.fyi/8000', options: {} };
+const config: SocketIoConfig = { url: 'https://api.zaibatsu.fyi/8000', options: {} };
 
 
 const firebaseConfig = {

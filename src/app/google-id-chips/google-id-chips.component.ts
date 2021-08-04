@@ -32,7 +32,7 @@ export class GoogleIdChipsComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
-  androidServerUrl = 'http://api.zaibatsu.fyi/api/android';
+  androidServerUrl = 'https://api.zaibatsu.fyi/api/android';
   ids: ID[] = [];
 
   add(event: MatChipInputEvent): void {
