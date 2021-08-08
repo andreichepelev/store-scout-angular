@@ -60,7 +60,7 @@ export class SubscriptionListComponent implements OnInit {
     this.authService.authState.pipe(
       tap((state) => console.log('[Subscription list] authState', state)),
       filter((state) => state),
-      map(() => {
+      switchMap(() => {
         console.log('[Subscription list] Getting apps per user')
         return this.http.get<AppUpdateResult>(
           this.subscribeServerUrl, 
@@ -76,6 +76,7 @@ export class SubscriptionListComponent implements OnInit {
         return throwError(error)
       })
     ).subscribe((data) => {
+      console.log('got list: ', data)
       data.forEach(element => this.appList.push(element));
     })
   }
