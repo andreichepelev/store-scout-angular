@@ -69,10 +69,17 @@
     right: 0; 
     left: 0;
     bottom: 0;
+
+  }
+
+  mat-tab {
+    height: auto;
+    width: auto;
   }
 
   mat-sidenav {
     padding: 1em;
+    width: 25em;
   }
 
   .report-title {
