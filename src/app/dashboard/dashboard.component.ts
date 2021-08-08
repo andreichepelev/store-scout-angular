@@ -8,9 +8,6 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs'
 import { ButtonStateService } from '../services/buttonState/button-state.service'
 import { TableDataSenderService } from '../services/tableDataSender/table-data-sender.service'
-import { element } from 'protractor';
-
-
 
 
 

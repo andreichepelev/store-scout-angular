@@ -8,9 +8,10 @@ import {
 
 //for the API request
 import { HttpClient } from '@angular/common/http';
-import { catchError, filter, switchMap } from 'rxjs/operators';
+import { catchError, filter, switchMap, tap, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth/auth.service'
 
 
 interface AppUpdate {
@@ -43,11 +44,24 @@ export class SubscriptionListComponent implements OnInit {
   subscribeServerUrl = 'https://api.zaibatsu.fyi/api/getapps';
   appList = []
 
+
+  // this.socket = this.authService.authState.pipe(
+  //   tap((state) => console.log('[ReportService] authSate', state)),
+  //   filter((state) => state),
+  //   map(() => {
+  //     console.log('[ReportService] Creating new socket, token')
+  //     return io(SOCKET_ENDPOINT, {withCredentials: true});
+  //   }),
+  //   shareReplay(1)
+  // )
+
   getApps() {
-    console.log('Getting apps per user')
-    this.afAuth.authState.pipe(
-      filter(Boolean),
-      switchMap(() => {
+    console.log('Trying to get apps per user')
+    this.authService.authState.pipe(
+      tap((state) => console.log('[Subscription list] authState', state)),
+      filter((state) => state),
+      map(() => {
+        console.log('[Subscription list] Getting apps per user')
         return this.http.get<AppUpdateResult>(
           this.subscribeServerUrl, 
           {
@@ -65,6 +79,30 @@ export class SubscriptionListComponent implements OnInit {
       data.forEach(element => this.appList.push(element));
     })
   }
+
+
+  // getApps() {
+  //   console.log('Getting apps per user')
+  //   this.afAuth.authState.pipe(
+  //     filter(Boolean),
+  //     switchMap(() => {
+  //       return this.http.get<AppUpdateResult>(
+  //         this.subscribeServerUrl, 
+  //         {
+  //           withCredentials: true,
+  //           observe: 'body',
+  //           responseType: 'json'
+  //         }
+  //       )    
+  //     }),
+  //     catchError(error => {
+  //       console.log('Getting app data failed')
+  //       return throwError(error)
+  //     })
+  //   ).subscribe((data) => {
+  //     data.forEach(element => this.appList.push(element));
+  //   })
+  // }
 
   //Selection:
 
@@ -113,6 +151,7 @@ export class SubscriptionListComponent implements OnInit {
     private http: HttpClient,
     public afAuth: AngularFireAuth,
     private _snackBar: MatSnackBar,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {

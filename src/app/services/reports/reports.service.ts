@@ -24,7 +24,7 @@ export class ReportsService {
         return io(SOCKET_ENDPOINT, {withCredentials: true});
       }),
       shareReplay(1)
-    );
+    )
   }
 
   getReport(): Observable<Report> {
