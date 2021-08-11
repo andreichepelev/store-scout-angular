@@ -10,14 +10,17 @@ body {
 }
 
 
+
 //Angular-generated classes changed to avoid scroll that appears in the drawer
 
 .mat-tab-body-wrapper {
     height: 100%;
-    width: 100%;
 }
 
 .mat-tab-group {
     height: 100%;
-    width: 100%;
+}
+
+.mat-tab-body-content {
+    overflow: hidden !important;
 }

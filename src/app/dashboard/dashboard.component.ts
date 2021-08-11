@@ -53,15 +53,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dialog.open(SignInComponent, {});
   }
 
-  // Old function for mass subscription (disabled so far, maybe later will be removed)
-  // subscribe() {
-  //   // console.log(this.tableData)
-  //   for (var app of this.tableData) {
-  //     const storedAppIDValue = app.storedAppID
-  //     console.log(storedAppIDValue)
-  //   }
-
-  // }
 
   ngOnInit() {
 

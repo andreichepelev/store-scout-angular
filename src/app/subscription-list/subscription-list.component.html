@@ -1,11 +1,18 @@
-<p class="subtitle">
-    You are subscribed to the apps listed below &
-    will receive emails after their new versions
-    are released. To unsubscribe, select one or
-    several apps, then click the Unsubscribe button.
-    To refresh the list after subscribing or 
-    unsubscribing to new apps, just reload the page.
+<p class="subtitle" *ngIf="appList.length > 0">
+    You are subscribed to the apps listed below & will receive emails after their new versions are released.
+    <br>
+    <br>
+    To unsubscribe, select one or several apps, then click the Unsubscribe button. To refresh the list after subscribing or unsubscribing to new apps, just reload the page.
 </p>
+
+<p class="subtitle" *ngIf="appList.length == 0">
+    You haven't subscribed to any apps.
+    <br>
+    <br>
+    To subscribe to an app, paste one or more AppStore or PlayStore URLs to respective input fields in the "Check Stores" tab, check them and then press Subscribe. All your subscriptions will be listed below.
+</p>
+
+
 
 <form class="app-list-form" #AppList=ngForm (ngSubmit)="unsubscribeFromSelected()">
     <mat-selection-list #apps (selectionChange)="onSelectionChange()">

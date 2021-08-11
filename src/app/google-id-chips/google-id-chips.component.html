@@ -13,13 +13,14 @@
              [matChipInputAddOnBlur]="addOnBlur"
              (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
+    <mat-error *ngIf="chipList.errorState">Invalid PlayStore URLs were removed</mat-error>
   </mat-form-field>
+  <br>
   <br>
   <button 
     mat-stroked-button
     type="submit" 
     color="primary" 
-    (click)="openSnackBar(); callProgressBar()"
     class="submit-button"
   >
   Check PlayStore

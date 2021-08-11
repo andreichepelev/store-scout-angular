@@ -12,14 +12,15 @@
              [matChipInputAddOnBlur]="addOnBlur"
              (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
+    <mat-error *ngIf="chipList.errorState">Invalid AppStore URLs were removed</mat-error>
   </mat-form-field>
   <br>
+  <br>
   <button 
-  mat-stroked-button 
-  type="submit" 
-  color="primary" 
-  (click)="openSnackBar(); callProgressBar()" 
-  class="submit-button"
+    mat-stroked-button 
+    type="submit" 
+    color="primary" 
+    class="submit-button"
   >
   Check AppStore
   </button>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {
@@ -33,6 +33,9 @@ export class GoogleIdChipsComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   androidServerUrl = 'https://api.zaibatsu.fyi/api/android';
+
+  @ViewChild("chipList") chipList;
+
   ids: ID[] = [];
 
   add(event: MatChipInputEvent): void {
@@ -64,17 +67,38 @@ export class GoogleIdChipsComponent implements OnInit {
     private progressbarService: ProgressbarService
     ) {}
 
-  sendAndroidRequest() {
-    const ids = this.ids;
-    // debugger;
-    this.http.post<ID>(this.androidServerUrl, ids, { withCredentials: true })
-      .pipe(
-        catchError(error => {
-          console.log('Sending data failed')
-          return throwError(error)
-        })
-      ).subscribe(ids => console.log(ids));
-  }
+    sendAndroidRequest() {
+      var ids = this.ids
+  
+      for (let id of ids) {
+        var index = ids.indexOf(id)
+        if(id.storedAppID.includes('play.google.com')) {
+        } else {
+            this.chipList.errorState = true;
+            ids.splice(index, 1)
+            setTimeout(()=> {
+              this.chipList.errorState = false;
+              }, 5000)
+          }
+        }
+  
+      if (!ids.length) {
+        console.log('No valid URLs added')
+      } else {
+        console.log('Google ids array: ', ids)
+        // debugger;
+        this.http.post<ID>(this.androidServerUrl, ids, { withCredentials: true })
+          .pipe(
+            catchError(error => {
+              console.log('Sending data failed')
+              return throwError(error)
+            })
+          ).subscribe(ids => console.log(ids))
+          
+          this.openSnackBar()
+          this.callProgressBar()
+      }
+    }
 
   openSnackBar() {
     this._snackBar.open('Zaibatsu bot is fetching data, it will appear in the table below. Normally it takes from 8 to 30 seconds for each app update', 'Got it', {

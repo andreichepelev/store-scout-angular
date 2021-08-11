@@ -73,9 +73,6 @@
           <mat-icon>help_outline</mat-icon>
           <a class='link' href="mailto:andrei@zaibatsu.fyi">andrei@zaibatsu.fyi</a> 
         </div>
-
-        
-
       </mat-tab>
   
       <mat-tab label="Subscriptions">
@@ -88,25 +85,14 @@
   </mat-sidenav>
   
   <mat-sidenav-content>
-    <!-- <button mat-button (click)="openLogInDialog()">Open dialog</button> -->
     <mat-grid-list cols="7" rowHeight="4em">
       <mat-grid-tile colspan="3">
         <h2 class="report-title">Updates</h2>
       </mat-grid-tile>
 
-      <mat-grid-tile colspan="1">
+      <mat-grid-tile colspan="4">
       </mat-grid-tile>
 
-      <mat-grid-tile colspan="3">
-        <!-- mass subscription button, disabled so far, maybe needs to be removed later -->
-        <!-- <button 
-          *ngIf="doesTableContainApps" 
-          mat-raised-button color="primary" 
-          class="subcription-button"
-          (click)="subscribe()">
-          Subscribe
-        </button> -->
-      </mat-grid-tile>
     </mat-grid-list>
 
     <app-table></app-table>
