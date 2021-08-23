@@ -1,0 +1,87 @@
+ 
+  h1 {
+    font-size: larger;
+    margin-bottom: 1em;
+    margin-left: 0.2em;
+  }
+
+  .bigger-text {
+    color: white;
+    line-height: 1.5em;
+    font-size: 1.2em;
+    padding-top: 2em;
+    padding-bottom:1.5em;
+    padding-right: 1.5em;
+
+      span {
+        color: #F4DD53;
+        }
+}
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .user-email {
+    font-size: medium;
+    margin-bottom: 2em;
+    margin-top: 1.2em;
+    margin-right: 0.5em;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .login-button {
+    margin-bottom: 2em;
+  }
+
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .responsive-toolbar {
+    position: fixed;
+    min-height: 4.6em;
+  }
+
+  mat-sidenav-container {
+    position: absolute;
+    top: 4.6em;
+    right: 0; 
+    left: 0;
+    bottom: 0;
+  }
+
+
+  mat-sidenav {
+    padding: 1em;
+    width: 25em;
+  }
+
+  .report-title {
+    margin: 1em;
+    margin-top: 2em;
+    position: absolute;
+    left: 0; 
+  }
+
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #F4DD53;
+    padding-bottom: 2em;
+    position:absolute;
+    padding-top:2px
+  }
+
+  .myCustomHeading {
+    position:relative;
+    padding-top:4px;
+  }

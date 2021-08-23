@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { JobsAdminPanelComponent } from './jobs-admin-panel/jobs-admin-panel.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { SignInComponent } from './sign-in/sign-in.component'
 import { SignUpComponent } from './sign-up/sign-up.component'
@@ -48,8 +49,13 @@ const routes: Routes = [
     component: DashboardComponent,  
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLanding }
- 
   },
+
+  { path: 'jobs-admin-panel', 
+  component: JobsAdminPanelComponent,  
+  canActivate: [AngularFireAuthGuard],
+  data: { authGuardPipe: redirectUnauthorizedToLanding }
+},
 
   { path: 'forgot-password', 
     component: ForgotPasswordComponent 
