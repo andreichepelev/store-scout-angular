@@ -1,10 +1,10 @@
 <mat-toolbar>
     
     <h1 class = "dot" *ngIf="(isDesktop | async)?.matches">.</h1>
-    <h1 *ngIf="(isDesktop | async)?.matches">for your information</h1>
+    <h1 *ngIf="(isDesktop | async)?.matches">Zaibatsu Store Scout</h1>
 
     <h1 class = 'dot-mobile' *ngIf="(isMobile | async)?.matches">.</h1>
-    <h1 class = 'h1-mobile' *ngIf="(isMobile | async)?.matches">for your information</h1>
+    <h1 class = 'h1-mobile' *ngIf="(isMobile | async)?.matches">Zaibatsu Store Scout</h1>
 
     <span class="spacer"></span>
 
@@ -17,7 +17,7 @@
     <ng-template #notLoggenIn>
       <button 
       mat-raised-button color="primary"
-      (click)="openLogInDialog()">
+      (click)="openSignUpDialog()">
         Get app updates
       </button>
     </ng-template>
@@ -78,7 +78,7 @@
                     <img src="../../assets/img/search.png" alt="monitor">
                     <br>
                     <span>
-                        Zaibatsu <span>monitors</span>
+                        Store Scout <span>monitors</span>
                     </span>
                     <br>
                     <span>
@@ -124,7 +124,7 @@
             <img src="../../assets/img/search.png" alt="monitor">
             <br>
             <span>
-                Zaibatsu <span>monitors</span>
+                Store Scout <span>monitors</span>
             </span>
             <br>
             <span>
@@ -193,7 +193,7 @@
                     <br>
                     <button mat-raised-button color="primary" 
                         *ngIf="authService.isLoggedIn==false;" 
-                        (click)="openLogInDialog()">
+                        (click)="openSignUpDialog()">
                         Try now, it's free
                     </button>
                 </p>
@@ -232,7 +232,7 @@
             <br>
             <button mat-raised-button color="primary" 
                 *ngIf="authService.isLoggedIn==false;" 
-                (click)="openLogInDialog()">
+                (click)="openSignUpDialog()">
                 Try now, it's free
             </button>
             <br>
@@ -269,7 +269,7 @@
                     <br>
                     <button mat-raised-button color="primary" 
                         *ngIf="authService.isLoggedIn==false;" 
-                        (click)="openLogInDialog()">
+                        (click)="openSignUpDialog()">
                         Start getting updates today
                     </button>
                 </p>
@@ -311,7 +311,7 @@
                     <br>
                     <button mat-raised-button color="primary" 
                         *ngIf="authService.isLoggedIn==false;" 
-                        (click)="openLogInDialog()">
+                        (click)="openSignUpDialog()">
                         Start getting updates today
                     </button>
                 </p>

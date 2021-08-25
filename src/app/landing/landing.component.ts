@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service'
-import { SignInComponent } from '../sign-in/sign-in.component'
+import { SignUpComponent } from '../sign-up/sign-up.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
@@ -31,8 +31,8 @@ export class LandingComponent implements OnInit {
     this.isDesktop = this.observer.observe('(min-width: 761px)')
   }
 
-  openLogInDialog() {
-    this.dialog.open(SignInComponent, {});
+  openSignUpDialog() {
+    this.dialog.open(SignUpComponent, {});
   }
 
   ngOnInit(): void {}
