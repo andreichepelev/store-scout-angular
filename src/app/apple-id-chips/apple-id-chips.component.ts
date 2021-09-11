@@ -24,6 +24,8 @@ export interface ID {
 })
 export class AppleIdChipsComponent implements OnInit {
 
+  value = '';
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
@@ -96,8 +98,13 @@ export class AppleIdChipsComponent implements OnInit {
           })
         ).subscribe(ids => console.log(ids))
 
+        // ids.splice(index, 1)
+
+        
         this.openSnackBar()
         this.callProgressBar()
+        ids.splice(0,ids.length)
+
     }
   }
 
