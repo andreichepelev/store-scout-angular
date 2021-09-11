@@ -97,6 +97,7 @@ export class GoogleIdChipsComponent implements OnInit {
           
           this.openSnackBar()
           this.callProgressBar()
+          ids.splice(0,ids.length)
       }
     }
 
