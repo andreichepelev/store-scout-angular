@@ -94,26 +94,39 @@ export class TableComponent implements OnInit, OnDestroy {
       });
     }
 
+    openInvalidSnackBar() {
+      this._snackBar.open(`You can't subscribe to an app with invalid details. Please paste its URL to the left bar once again and try getting its details again`, 'Got it', {
+        duration: 6000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
+    }
+
 
     subscribeToApp(appNameText) {
       // console.log(`App name: ${storedAppID}`)
-      this.http.post<ID>(
-        this.subscribeServerUrl, 
-        JSON.stringify({appNameText}), 
-        {
-          withCredentials: true,
-          headers: {
-            'Content-Type': 'application/json'
+
+      if (appNameText == 'n/a') {
+        this.openInvalidSnackBar()
+      } else {
+        this.http.post<ID>(
+          this.subscribeServerUrl, 
+          JSON.stringify({appNameText}), 
+          {
+            withCredentials: true,
+            headers: {
+              'Content-Type': 'application/json'
+            }
           }
-        }
-      )
-        .pipe(
-          catchError(error => {
-            console.log('User has more than 5 subscriptions or already subscribed to this app')
-            this.openFailSnackBar()
-            return throwError(error)
-          })
-        ).subscribe(appNameText => this.openSuccessSnackBar());
+        )
+          .pipe(
+            catchError(error => {
+              console.log('User has more than 5 subscriptions or already subscribed to this app')
+              this.openFailSnackBar()
+              return throwError(error)
+            })
+          ).subscribe(appNameText => this.openSuccessSnackBar());
+      }
     }
 
 
