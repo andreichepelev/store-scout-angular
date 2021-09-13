@@ -20,6 +20,10 @@ export interface ID {
   storedAppID: string;
 }
 
+//local storage
+import { LocalStorageService } from '../local-storage.service'
+
+
 
 @Component({
   selector: 'app-table',
@@ -64,6 +68,7 @@ export class TableComponent implements OnInit, OnDestroy {
     private _mobileQueryListener: () => void;
   
     constructor(
+      private localStorageService: LocalStorageService,
       private http: HttpClient,
       private _snackBar: MatSnackBar,
       private progressbarService: ProgressbarService,
@@ -95,7 +100,7 @@ export class TableComponent implements OnInit, OnDestroy {
     }
 
     openInvalidSnackBar() {
-      this._snackBar.open(`You can't subscribe to an app with invalid details. Please paste its URL to the left bar once again and try getting its details again`, 'Got it', {
+      this._snackBar.open(`You can't subscribe to an app with invalid details. Please paste its URL to the input field on the left panel once again and try getting its details again`, 'Got it', {
         duration: 6000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
@@ -144,6 +149,7 @@ export class TableComponent implements OnInit, OnDestroy {
           console.log(this.table_data)
           this.buttonStateService.updateAppsNumber(this.table_data.length)
           this.tableDataSenderService.pushTableData(report)
+          this.localStorageService.setItem('app', JSON.stringify(this.table_data))
         });
   
   }
