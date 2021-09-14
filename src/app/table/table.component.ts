@@ -139,13 +139,17 @@ export class TableComponent implements OnInit, OnDestroy {
 
     var apps = JSON.parse(this.localStorageService.getItem('apps'));
 
-    apps.forEach(element => {
-      delete element.updatedAt
-      delete element.user
-      delete element._id
-      delete element.__v
-      this.tableDataSenderService.pushTableData(element)
-    });
+    if (apps !== null) {
+      apps.forEach(element => {
+        delete element.updatedAt
+        delete element.user
+        delete element._id
+        delete element.__v
+        this.tableDataSenderService.pushTableData(element)
+      });
+    } else {
+      console.log('local storage is empty')
+    }
 
 
   //   export interface Report {
