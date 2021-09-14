@@ -145,11 +145,15 @@ export class TableComponent implements OnInit, OnDestroy {
         delete element.user
         delete element._id
         delete element.__v
-        this.tableDataSenderService.pushTableData(element)
+        this.reportData.push(element)
+        // this.tableDataSenderService.pushTableData(element)
+        //reportData
       });
     } else {
       console.log('local storage is empty')
     }
+
+    console.log('reportData: ', this.reportData)
 
 
   //   export interface Report {
