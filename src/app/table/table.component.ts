@@ -136,6 +136,10 @@ export class TableComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+
+    var apps = JSON.parse(this.localStorageService.getItem('apps'));
+    console.log(apps)
+
     
     this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
       this.showProgressBar(x);
@@ -149,7 +153,7 @@ export class TableComponent implements OnInit, OnDestroy {
           console.log(this.table_data)
           this.buttonStateService.updateAppsNumber(this.table_data.length)
           this.tableDataSenderService.pushTableData(report)
-          this.localStorageService.setItem('app', JSON.stringify(this.table_data))
+          this.localStorageService.setItem('apps', JSON.stringify(this.table_data))
         });
   
   }
