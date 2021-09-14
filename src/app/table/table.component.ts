@@ -138,9 +138,39 @@ export class TableComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     var apps = JSON.parse(this.localStorageService.getItem('apps'));
-    console.log(apps)
 
+    apps.forEach(element => {
+      delete element.updatedAt
+      delete element.user
+      delete element._id
+      delete element.__v
+      this.tableDataSenderService.pushTableData(element)
+    });
+
+
+  //   export interface Report {
+  //     os: String
+  //     storedAppID: String
+  //     appNameText: String
+  //     versionText: String
+  //     releaseDateText: String 
+  //     releaseNotesText: String
+  // }
+
+// appNameText: "Tomato App"
+// os: "iOS"
+// releaseDateText: "2021-09-03"
+// versionText: "3.1.0"
+// releaseNotesText: "1. Support Miaomiao3 2. Fix some issues"
+// storedAppID: "tomato-app/id1474342049"
+
+// createdAt: "2021-09-13T18:23:29.553Z"
+// updatedAt: "2021-09-14T05:58:34.569Z"
+// user: []
+// __v: 0
+// _id: "613f9721d27d0524130a937e"
     
+
     this.clickEventsubscription = this.progressbarService.clickSubject.subscribe((x)=>{
       this.showProgressBar(x);
     })
