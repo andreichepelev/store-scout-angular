@@ -21,7 +21,7 @@ export interface ID {
 }
 
 //local storage
-import { LocalStorageService } from '../local-storage.service'
+import { LocalStorageService } from '../services/localStorage/local-storage.service'
 
 
 
