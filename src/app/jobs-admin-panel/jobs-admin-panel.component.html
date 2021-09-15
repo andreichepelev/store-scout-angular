@@ -16,29 +16,70 @@
   
 <table mat-table id='report-table' [dataSource]="table_data" [class.is-mobile]="mobileQuery.matches" >
 
+
     <ng-container matColumnDef="os">
       <th mat-header-cell *matHeaderCellDef>OS</th>
       <td mat-cell *matCellDef="let report">{{report.os}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="appNameText">
+    <ng-container matColumnDef="storedAppID">
       <th mat-header-cell *matHeaderCellDef>App</th>
-      <td mat-cell *matCellDef="let report">{{report.appNameText}}</td>
+      <td mat-cell *matCellDef="let report">{{report.storedAppID}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="releaseDateText">
-      <th mat-header-cell *matHeaderCellDef>Date</th>
-      <td mat-cell *matCellDef="let report">{{report.releaseDateText}}</td>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>addedToQueue</th>
+      <td mat-cell *matCellDef="let report">{{report.addedToQueue}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="versionText">
+    <ng-container matColumnDef="zeroSubscribers">
       <th mat-header-cell *matHeaderCellDef>Version</th>
-      <td mat-cell *matCellDef="let report">{{report.versionText}}</td>
+      <td mat-cell *matCellDef="let report">{{report.zeroSubscribers}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="releaseNotesText">
+    <ng-container matColumnDef="backendResult">
       <th mat-header-cell *matHeaderCellDef>Release Notes</th>
-      <td mat-cell *matCellDef="let report">{{report.releaseNotesText}}</td>
+      <td mat-cell *matCellDef="let report">{{report.backendResult}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="puppeteerChromeResult">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.puppeteerChromeResult}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="puppeteerFirefoxResult">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.puppeteerFirefoxResult}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="newNotes">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.newNotes}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="reportSent">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.reportSent}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dbUpdated">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.dbUpdated}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="invalid">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.invalid}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="scheduled">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.scheduled}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sentToWS">
+      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <td mat-cell *matCellDef="let report">{{report.sentToWS}}</td>
     </ng-container>
 
 

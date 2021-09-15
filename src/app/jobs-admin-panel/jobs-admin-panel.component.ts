@@ -27,10 +27,24 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
   report: Job;
 
   //table column names
-  col_names: string[] = ['os','appNameText', 'releaseDateText', 'versionText', 'releaseNotesText'];
+  col_names: string[] = [
+      'os',
+      'storedAppID', 
+      'type', 
+      'addedToQueue', 
+      'zeroSubscribers', 
+      'backendResult', 
+      'puppeteerChromeResult', 
+      'puppeteerFirefoxResult', 
+      'newNotes', 
+      'reportSent', 
+      'dbUpdated', 
+      'invalid', 
+      'scheduled', 
+      'sentToWS'
+    ];
   //table data exported:
   table_data = this.jobData;
-
 
 
   //for responsiveness
