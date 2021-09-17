@@ -3,14 +3,16 @@ import { AuthService } from '../services/auth/auth.service'
 import { MatDialog } from '@angular/material/dialog'
 import { MediaMatcher } from '@angular/cdk/layout';
 
-//
+
+//for the API request
 import { Job } from '../models/job'
-
-
-//for sending requests
 import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, filter, switchMap, tap, map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+
+type JobResult = Array<Job>
+
 
 
 @Component({
@@ -19,6 +21,8 @@ import { catchError } from 'rxjs/operators';
   styleUrls: ['./jobs-admin-panel.component.scss']
 })
 export class JobsAdminPanelComponent implements OnInit, OnDestroy {
+
+  jobServerUrl = 'https://api.zaibatsu.fyi/api/jobs';
 
   //table data:
   jobData: Job[] = [];
@@ -30,6 +34,7 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
   col_names: string[] = [
       'os',
       'storedAppID', 
+      'appNameText',
       'type', 
       'addedToQueue', 
       'zeroSubscribers', 
@@ -45,6 +50,32 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
     ];
   //table data exported:
   table_data = this.jobData;
+
+  getJobs() {
+    console.log('Trying to get jobs')
+    this.authService.authState.pipe(
+      tap((state) => console.log('[Jobs list] authState', state)),
+      filter((state) => state),
+      switchMap(() => {
+        console.log('[Jobs list] Getting jobs')
+        return this.http.get<JobResult>(
+          this.jobServerUrl, 
+          {
+            withCredentials: true,
+            observe: 'body',
+            responseType: 'json'
+          }
+        )    
+      }),
+      catchError(error => {
+        console.log('Getting app data failed')
+        return throwError(error)
+      })
+    ).subscribe((data) => {
+      console.log('got list: ', data)
+      data.forEach(element => this.jobData.push(element));
+    })
+  }
 
 
   //for responsiveness
@@ -65,7 +96,7 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-
+    this.getJobs()
   }
 
   ngOnDestroy(): void {

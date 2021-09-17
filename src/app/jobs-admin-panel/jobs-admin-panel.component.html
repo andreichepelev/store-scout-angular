@@ -32,6 +32,11 @@
       <td mat-cell *matCellDef="let report">{{report.addedToQueue}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="appNameText">
+      <th mat-header-cell *matHeaderCellDef>addedToQueue</th>
+      <td mat-cell *matCellDef="let report">{{report.appNameText}}</td>
+    </ng-container>
+
     <ng-container matColumnDef="zeroSubscribers">
       <th mat-header-cell *matHeaderCellDef>Version</th>
       <td mat-cell *matCellDef="let report">{{report.zeroSubscribers}}</td>
