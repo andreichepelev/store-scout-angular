@@ -84,7 +84,7 @@ export class TableComponent implements OnInit, OnDestroy {
     }
 
     openSuccessSnackBar() {
-      this._snackBar.open(`Successfully subscribed to the app! You will see it in the Subscriptions tab on the left after you refresh the page. Warning: table data will be lost!`, 'Got it', {
+      this._snackBar.open(`Successfully subscribed to the app! You will see it in the Subscriptions tab on the left after you refresh the page.`, 'Got it', {
         duration: 5000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
