@@ -1,16 +1,17 @@
 export interface Job {
-    os: {type: String },
-    storedAppID: {type: String, index: true, required: true},
-    type: {type: String, enum: ['manual', 'scheduled']},
-    addedToQueue: {type: Boolean},
-    zeroSubscribers: {type: String},
-    backendResult: {type: String},
-    puppeteerChromeResult: {type: String},
-    puppeteerFirefoxResult: {type: String},
-    newNotes: {type: Boolean},
-    reportSent: {type: Boolean},
-    dbUpdated: {type: String},
-    invalid: {type: Boolean},
-    scheduled: {type: Boolean},
-    sentToWS: {type: Boolean}
+    os: String
+    storedAppID: String
+    appNameText: String
+    type: String
+    addedToQueue: Boolean
+    zeroSubscribers: String
+    backendResult: String
+    puppeteerChromeResult: String
+    puppeteerFirefoxResult: String
+    newNotes: Boolean
+    reportSent: Boolean
+    dbUpdated: String
+    invalid: Boolean
+    scheduled: Boolean
+    sentToWS: Boolean
 }

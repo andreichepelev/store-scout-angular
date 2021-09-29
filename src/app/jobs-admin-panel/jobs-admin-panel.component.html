@@ -1,4 +1,5 @@
-<mat-toolbar class='responsive-toolbar'>
+<div class = 'dashboard-admin'>
+  <!-- <mat-toolbar class='responsive-toolbar'>
 
     <h1>Store Scout queue dashboard</h1>
     
@@ -11,10 +12,12 @@
       Log Out
     </button>
 
-</mat-toolbar>
-
+  </mat-toolbar> -->
   
-<table mat-table id='report-table' [dataSource]="table_data" [class.is-mobile]="mobileQuery.matches" >
+
+
+
+  <table mat-table id='report-table' [dataSource]="table_data" [class.is-mobile]="mobileQuery.matches" >
 
 
     <ng-container matColumnDef="os">
@@ -23,17 +26,17 @@
     </ng-container>
 
     <ng-container matColumnDef="storedAppID">
-      <th mat-header-cell *matHeaderCellDef>App</th>
+      <th mat-header-cell *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let report">{{report.storedAppID}}</td>
     </ng-container>
 
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>addedToQueue</th>
+      <th mat-header-cell *matHeaderCellDef>Added to queue</th>
       <td mat-cell *matCellDef="let report">{{report.addedToQueue}}</td>
     </ng-container>
 
     <ng-container matColumnDef="appNameText">
-      <th mat-header-cell *matHeaderCellDef>addedToQueue</th>
+      <th mat-header-cell *matHeaderCellDef>App</th>
       <td mat-cell *matCellDef="let report">{{report.appNameText}}</td>
     </ng-container>
 
@@ -91,3 +94,10 @@
     <tr mat-header-row *matHeaderRowDef="col_names"></tr>
     <tr mat-row *matRowDef="let row; columns: col_names;"></tr>
   </table>
+
+</div>
+
+
+
+
+  
