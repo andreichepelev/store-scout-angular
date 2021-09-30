@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, filter, switchMap, tap, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ServerResponse } from 'http';
 
 type JobResult = Array<Job>
 
