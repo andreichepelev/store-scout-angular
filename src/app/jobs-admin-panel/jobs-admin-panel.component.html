@@ -30,10 +30,10 @@
       <td mat-cell *matCellDef="let report">{{report.storedAppID}}</td>
     </ng-container>
 
-    <!-- <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Added to queue</th>
+    <ng-container matColumnDef="addedToQueue">
+      <th mat-header-cell *matHeaderCellDef>Queued</th>
       <td mat-cell *matCellDef="let report">{{report.addedToQueue}}</td>
-    </ng-container> -->
+    </ng-container>
 
     <ng-container matColumnDef="appNameText">
       <th mat-header-cell *matHeaderCellDef>App</th>
@@ -41,52 +41,52 @@
     </ng-container>
 
     <ng-container matColumnDef="zeroSubscribers">
-      <th mat-header-cell *matHeaderCellDef>Version</th>
+      <th mat-header-cell *matHeaderCellDef>Zero sub</th>
       <td mat-cell *matCellDef="let report">{{report.zeroSubscribers}}</td>
     </ng-container>
 
     <ng-container matColumnDef="backendResult">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>BE</th>
       <td mat-cell *matCellDef="let report">{{report.backendResult}}</td>
     </ng-container>
 
     <ng-container matColumnDef="puppeteerChromeResult">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>Chrome</th>
       <td mat-cell *matCellDef="let report">{{report.puppeteerChromeResult}}</td>
     </ng-container>
 
     <ng-container matColumnDef="puppeteerFirefoxResult">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>Firefox</th>
       <td mat-cell *matCellDef="let report">{{report.puppeteerFirefoxResult}}</td>
     </ng-container>
 
     <ng-container matColumnDef="newNotes">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>New</th>
       <td mat-cell *matCellDef="let report">{{report.newNotes}}</td>
     </ng-container>
 
     <ng-container matColumnDef="reportSent">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>Email</th>
       <td mat-cell *matCellDef="let report">{{report.reportSent}}</td>
     </ng-container>
 
     <ng-container matColumnDef="dbUpdated">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>DBUpdated</th>
       <td mat-cell *matCellDef="let report">{{report.dbUpdated}}</td>
     </ng-container>
 
     <ng-container matColumnDef="invalid">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>Invalid</th>
       <td mat-cell *matCellDef="let report">{{report.invalid}}</td>
     </ng-container>
 
     <ng-container matColumnDef="scheduled">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>Scheduled</th>
       <td mat-cell *matCellDef="let report">{{report.scheduled}}</td>
     </ng-container>
 
     <ng-container matColumnDef="sentToWS">
-      <th mat-header-cell *matHeaderCellDef>Release Notes</th>
+      <th mat-header-cell *matHeaderCellDef>WS</th>
       <td mat-cell *matCellDef="let report">{{report.sentToWS}}</td>
     </ng-container>
 
