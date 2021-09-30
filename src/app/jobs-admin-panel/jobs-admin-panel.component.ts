@@ -148,6 +148,7 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
             responseType: 'json'
           }
         )
+        console.log('job result: ', jobResult)
         return jobResult
   }
 
@@ -201,6 +202,8 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
     this.getJobs().subscribe((result)=>{
       this.table_data = result
     })
+    console.log('table data: ', this.table_data)
+
   }
 
   // .subscribe((result)=>{    
