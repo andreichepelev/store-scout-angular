@@ -23,45 +23,42 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
   jobServerUrl = 'https://api.zaibatsu.fyi/api/jobs';
 
   //table data:
-  jobData: Job[] = [
-    {
-      os: '123', 
-      storedAppID: 'asd', 
-      appNameText: '132', 
-      type: 'kh', 
-      addedToQueue: true, 
-      zeroSubscribers: 'rrr',
-      backendResult: '123', 
-      puppeteerChromeResult: 'asd', 
-      puppeteerFirefoxResult: '132', 
-      newNotes: true, 
-      reportSent: true, 
-      dbUpdated: 'rrr',
-      invalid: true, 
-      scheduled: true, 
-      sentToWS: true
-    },
-    {
-      os: '123', 
-      storedAppID: 'asd', 
-      appNameText: '132', 
-      type: 'kh', 
-      addedToQueue: true, 
-      zeroSubscribers: 'rrr',
-      backendResult: '123', 
-      puppeteerChromeResult: 'asd', 
-      puppeteerFirefoxResult: '132', 
-      newNotes: true, 
-      reportSent: true, 
-      dbUpdated: 'rrr',
-      invalid: true, 
-      scheduled: true, 
-      sentToWS: true
-    }
-  ];
+  jobData: Job[] = [];
   //hardcoded data for testing:
-
-
+  // {
+  //   os: '123', 
+  //   storedAppID: 'asd', 
+  //   appNameText: '132', 
+  //   type: 'kh', 
+  //   addedToQueue: true, 
+  //   zeroSubscribers: 'rrr',
+  //   backendResult: '123', 
+  //   puppeteerChromeResult: 'asd', 
+  //   puppeteerFirefoxResult: '132', 
+  //   newNotes: true, 
+  //   reportSent: true, 
+  //   dbUpdated: 'rrr',
+  //   invalid: true, 
+  //   scheduled: true, 
+  //   sentToWS: true
+  // },
+  // {
+  //   os: '123', 
+  //   storedAppID: 'asd', 
+  //   appNameText: '132', 
+  //   type: 'kh', 
+  //   addedToQueue: true, 
+  //   zeroSubscribers: 'rrr',
+  //   backendResult: '123', 
+  //   puppeteerChromeResult: 'asd', 
+  //   puppeteerFirefoxResult: '132', 
+  //   newNotes: true, 
+  //   reportSent: true, 
+  //   dbUpdated: 'rrr',
+  //   invalid: true, 
+  //   scheduled: true, 
+  //   sentToWS: true
+  // }
 
   report: Job;
 
