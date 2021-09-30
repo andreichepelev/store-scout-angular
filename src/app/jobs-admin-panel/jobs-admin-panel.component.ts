@@ -105,7 +105,8 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
       })
     ).subscribe((data) => {
       console.log('got list: ', data)
-      data.forEach(element => this.jobData.push(element));
+      data.forEach(element => this.table_data.push(element));
+      console.log('table data: ', this.table_data)
     })
   }
 
