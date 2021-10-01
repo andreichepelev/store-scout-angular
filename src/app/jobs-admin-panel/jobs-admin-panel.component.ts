@@ -2,6 +2,8 @@ import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core'
 import { AuthService } from '../services/auth/auth.service'
 import { MatDialog } from '@angular/material/dialog'
 import { MediaMatcher } from '@angular/cdk/layout';
+import {MatTableDataSource} from '@angular/material/table';
+
 
 
 //for the API request
@@ -24,41 +26,6 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
 
   //table data:
   jobData: Job[] = [];
-  //hardcoded data for testing:
-  // {
-  //   os: '123', 
-  //   storedAppID: 'asd', 
-  //   appNameText: '132', 
-  //   type: 'kh', 
-  //   addedToQueue: true, 
-  //   zeroSubscribers: 'rrr',
-  //   backendResult: '123', 
-  //   puppeteerChromeResult: 'asd', 
-  //   puppeteerFirefoxResult: '132', 
-  //   newNotes: true, 
-  //   reportSent: true, 
-  //   dbUpdated: 'rrr',
-  //   invalid: true, 
-  //   scheduled: true, 
-  //   sentToWS: true
-  // },
-  // {
-  //   os: '123', 
-  //   storedAppID: 'asd', 
-  //   appNameText: '132', 
-  //   type: 'kh', 
-  //   addedToQueue: true, 
-  //   zeroSubscribers: 'rrr',
-  //   backendResult: '123', 
-  //   puppeteerChromeResult: 'asd', 
-  //   puppeteerFirefoxResult: '132', 
-  //   newNotes: true, 
-  //   reportSent: true, 
-  //   dbUpdated: 'rrr',
-  //   invalid: true, 
-  //   scheduled: true, 
-  //   sentToWS: true
-  // }
 
   report: Job;
 
@@ -81,8 +48,7 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
       'updatedAt'
     ];
   //table data exported:
-  table_data = this.jobData;
-
+  table_data = new MatTableDataSource<Job>(this.jobData)
 
 
   getJobs() {
@@ -100,6 +66,10 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
         return jobResult
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.table_data.filter = filterValue.trim().toLowerCase();
+  }
 
   //for responsiveness
   mobileQuery: MediaQueryList
@@ -120,21 +90,12 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getJobs().subscribe((result)=>{
-      this.table_data = result
+      this.table_data.data = result
     })
     console.log('table data: ', this.table_data)
 
   }
 
-  // .subscribe((result)=>{    
-  //   this.dataSource  =  result.body
-
-
-  // ).subscribe((data) => {
-  //   console.log('got list: ', data)
-  //   this.table_data = data
-  //   console.log('table data: ', this.table_data)
-  // })
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener)
