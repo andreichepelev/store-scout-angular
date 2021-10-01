@@ -39,12 +39,15 @@
     width: 100%;
     border-radius: 10px;
     position: absolute;
+    margin: 1em;
     // top: 0px;
     // left: 0px;
     }
 
-    td {
-      padding-left: 1em;
-    }
+  td {
+    padding-left: 1em;
+  }
 
-
+  .dashboard-admin {
+    background-color: black;
+  }
