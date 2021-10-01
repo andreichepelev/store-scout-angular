@@ -14,7 +14,10 @@
 
   </mat-toolbar> -->
   
-
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
 
 
   <table mat-table id='report-table' [dataSource]="table_data" [class.is-mobile]="mobileQuery.matches" >
@@ -98,6 +101,10 @@
 
     <tr mat-header-row *matHeaderRowDef="col_names"></tr>
     <tr mat-row *matRowDef="let row; columns: col_names;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
   </table>
 
 </div>
