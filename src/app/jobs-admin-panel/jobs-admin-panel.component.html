@@ -60,11 +60,6 @@
       <td mat-cell *matCellDef="let report">{{report.puppeteerChromeResult}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="puppeteerFirefoxResult">
-      <th mat-header-cell *matHeaderCellDef>Firefox</th>
-      <td mat-cell *matCellDef="let report">{{report.puppeteerFirefoxResult}}</td>
-    </ng-container>
-
     <ng-container matColumnDef="newNotes">
       <th mat-header-cell *matHeaderCellDef>New</th>
       <td mat-cell *matCellDef="let report">{{report.newNotes}}</td>
@@ -93,6 +88,11 @@
     <ng-container matColumnDef="sentToWS">
       <th mat-header-cell *matHeaderCellDef>WS</th>
       <td mat-cell *matCellDef="let report">{{report.sentToWS}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef>Updated</th>
+      <td mat-cell *matCellDef="let report">{{report.updatedAt}}</td>
     </ng-container>
 
 
