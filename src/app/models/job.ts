@@ -12,6 +12,7 @@ export interface Job {
     reportSent: Boolean
     dbUpdated: String
     invalid: Boolean
+    scrapingError: String
     scheduled: Boolean
     sentToWS: Boolean
 }

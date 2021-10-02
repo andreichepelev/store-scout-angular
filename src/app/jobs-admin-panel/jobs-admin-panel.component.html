@@ -83,6 +83,11 @@
       <td mat-cell *matCellDef="let report">{{report.invalid}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="scrapingError">
+      <th mat-header-cell *matHeaderCellDef>Error</th>
+      <td mat-cell *matCellDef="let report">{{report.scrapingError}}</td>
+    </ng-container>
+
     <ng-container matColumnDef="scheduled">
       <th mat-header-cell *matHeaderCellDef>Scheduled</th>
       <td mat-cell *matCellDef="let report">{{report.scheduled}}</td>

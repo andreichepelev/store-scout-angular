@@ -43,6 +43,7 @@ export class JobsAdminPanelComponent implements OnInit, OnDestroy {
       'reportSent', 
       'dbUpdated', 
       'invalid', 
+      'scrapingError',
       'scheduled', 
       'sentToWS',
       'updatedAt'
