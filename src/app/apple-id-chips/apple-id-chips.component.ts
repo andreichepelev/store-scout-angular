@@ -78,8 +78,7 @@ export class AppleIdChipsComponent implements OnInit {
       var index = ids.indexOf(id)
       if(id.storedAppID.includes('apps.apple.com')) {  
         properIDs.push(id)
-        console.log('Proper IDs: ', properIDs)
-
+        console.log('Proper IDs after pushing: ', properIDs)
       } else {
           this.chipList.errorState = true;
           ids.splice(index, 1)
@@ -87,11 +86,12 @@ export class AppleIdChipsComponent implements OnInit {
           setTimeout(()=> {
             this.chipList.errorState = false;
             }, 5000)
-        }
+      }
+      console.log('ids after loop iteration: ', index, ids)
     }
 
     console.log('Apple ids array: ', ids)
-    console.log('Proper IDs: ', properIDs)
+    console.log('Proper IDs final: ', properIDs)
 
     if (!ids.length) {
       console.log('No valid URLs added')
