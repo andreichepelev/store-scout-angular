@@ -72,13 +72,16 @@ export class AppleIdChipsComponent implements OnInit {
 
   sendIOSRequest() {
     var ids = this.ids
+    var properIDs = []
 
     for (let id of ids) {
       var index = ids.indexOf(id)
-      if(id.storedAppID.includes('apps.apple.com')) {
+      if(id.storedAppID.includes('apps.apple.com')) {  
+        properIDs.push(id)
       } else {
           this.chipList.errorState = true;
           ids.splice(index, 1)
+          console.log('removed from the array:', id)
           setTimeout(()=> {
             this.chipList.errorState = false;
             }, 5000)
@@ -89,17 +92,17 @@ export class AppleIdChipsComponent implements OnInit {
       console.log('No valid URLs added')
     } else {
       console.log('Apple ids array: ', ids)
+      console.log('Proper IDs: ', properIDs)
       // debugger;
-      this.http.post<ID>(this.iOSServerUrl, ids, { withCredentials: true })
+      this.http.post<ID>(this.iOSServerUrl, properIDs, { withCredentials: true })
         .pipe(
           catchError(error => {
             console.log('Sending data failed')
             return throwError(error)
           })
-        ).subscribe(ids => console.log(ids))
+        ).subscribe(properIDs => console.log(properIDs))
 
         // ids.splice(index, 1)
-
         
         this.openSnackBar()
         this.callProgressBar()
