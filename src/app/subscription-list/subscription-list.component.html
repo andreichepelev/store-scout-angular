@@ -15,7 +15,7 @@
 <form class="app-list-form" #AppList=ngForm (ngSubmit)="unsubscribeFromSelected()">
     <mat-selection-list #apps (selectionChange)="onSelectionChange()">
         <mat-list-option *ngFor="let app of appList" [value]="app">
-          {{app.appNameText}} {{app.os}}
+          {{app.appNameText}}, {{app.os}}
         </mat-list-option>
     </mat-selection-list>
     <br>
