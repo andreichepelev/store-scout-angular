@@ -7,6 +7,8 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
+import {uniqBy} from 'lodash'
+
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -70,30 +72,46 @@ export class AppleIdChipsComponent implements OnInit {
     private progressbarService: ProgressbarService
     ) {}
 
+
+
+
+
   sendIOSRequest() {
     var ids = this.ids
-    var properIDs = []
 
-    for (let id of ids) {
-      var index = ids.indexOf(id)
-      if(id.storedAppID.includes('apps.apple.com')) {  
-        properIDs.push(id)
-        console.log('Proper IDs after pushing: ', properIDs)
-      } else {
-          this.chipList.errorState = true;
-          ids.splice(index, 1)
-          console.log('removed from the array:', id)
-          setTimeout(()=> {
-            this.chipList.errorState = false;
-            }, 5000)
-      }
-      console.log('ids after loop iteration: ', index, ids)
+    console.log('initial ids: ', ids)
+
+    const uniqIds = uniqBy(ids, (id) => id.storedAppID)
+    const properIDs = uniqIds.filter((id) => {
+      id.storedAppID.includes('apps.apple.com')
+    })
+    if (uniqIds.length > properIDs.length) {
+      this.chipList.errorState = true;
+      setTimeout(()=> {
+        this.chipList.errorState = false;
+      }, 5000)
     }
 
-    console.log('Apple ids array: ', ids)
+    // for (let id of ids) {
+    //   var index = ids.indexOf(id)
+    //   if(id.storedAppID.includes('apps.apple.com')) {  
+    //     properIDs.push(id)
+    //     console.log('Proper IDs after pushing: ', properIDs)
+    //   } else {
+    //       this.chipList.errorState = true;
+    //       ids.splice(index, 1)
+    //       console.log('removed from the array:', id)
+    //       setTimeout(()=> {
+    //         this.chipList.errorState = false;
+    //         }, 5000)
+    //   }
+    //   console.log('ids after loop iteration: ', index, ids)
+    // }
+
+    // console.log('Apple ids array: ', ids)
     console.log('Proper IDs final: ', properIDs)
 
-    if (!ids.length) {
+    if (!properIDs.length) {
       console.log('No valid URLs added')
     } else {
 
