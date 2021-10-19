@@ -81,7 +81,7 @@ export class AppleIdChipsComponent implements OnInit {
 
     console.log('initial ids: ', ids)
 
-    const uniqIds = uniqBy(ids, (id) => id.storedAppID)
+    var uniqIds = uniqBy(ids, (id) => id.storedAppID)
     const properIDs = uniqIds.filter((id) => {
       id.storedAppID.includes('apps.apple.com')
     })
