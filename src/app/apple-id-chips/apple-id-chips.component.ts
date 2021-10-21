@@ -85,9 +85,9 @@ export class AppleIdChipsComponent implements OnInit {
 
     console.log('unique ids: ', uniqIds)
 
-    const properIDs = uniqIds.filter(id => {
+    const properIDs = uniqIds.filter((id) => 
       id.storedAppID.includes('apps.apple.com')
-    })
+    )
 
     console.log('Proper IDs: ', properIDs)
 
