@@ -137,7 +137,7 @@ export class GoogleIdChipsComponent implements OnInit {
       console.log('unique ids: ', uniqIds)
   
       const properIDs = uniqIds.filter((id) => 
-        id.storedAppID.includes('apps.apple.com')
+        id.storedAppID.includes('play.google.com')
       )
   
       console.log('Proper IDs: ', properIDs)
