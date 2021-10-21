@@ -7,6 +7,8 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
+import {uniqBy} from 'lodash'
+
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -67,33 +69,99 @@ export class GoogleIdChipsComponent implements OnInit {
     private progressbarService: ProgressbarService
     ) {}
 
+    // sendIOSRequest() {
+    //   var ids = this.ids
+  
+    //   console.log('initial ids: ', ids)
+  
+    //   var uniqIds = uniqBy(ids, (id) => id.storedAppID)
+  
+    //   console.log('unique ids: ', uniqIds)
+  
+    //   const properIDs = uniqIds.filter((id) => 
+    //     id.storedAppID.includes('apps.apple.com')
+    //   )
+  
+    //   console.log('Proper IDs: ', properIDs)
+  
+  
+    //   if (uniqIds.length > properIDs.length) {
+    //     this.chipList.errorState = true;
+    //     setTimeout(()=> {
+    //       this.chipList.errorState = false;
+    //     }, 5000)
+    //   }
+  
+    //   if (!properIDs.length) {
+    //     console.log('No valid URLs added')
+    //   } else {
+  
+    //     // debugger;
+    //     this.http.post<ID>(this.iOSServerUrl, properIDs, { withCredentials: true })
+    //       .pipe(
+    //         catchError(error => {
+    //           console.log('Sending data failed')
+    //           return throwError(error)
+    //         })
+    //       ).subscribe(properIDs => console.log(properIDs))
+  
+    //       // ids.splice(index, 1)
+          
+    //       this.openSnackBar()
+    //       this.callProgressBar()
+    //       ids.splice(0,ids.length)
+  
+    //   }
+    // }
+
     sendAndroidRequest() {
+
+      // for (let id of ids) {
+      //   var index = ids.indexOf(id)
+      //   if(id.storedAppID.includes('play.google.com')) {
+      //   } else {
+      //       this.chipList.errorState = true;
+      //       ids.splice(index, 1)
+      //       setTimeout(()=> {
+      //         this.chipList.errorState = false;
+      //         }, 5000)
+      //     }
+      //   }
+
       var ids = this.ids
   
-      for (let id of ids) {
-        var index = ids.indexOf(id)
-        if(id.storedAppID.includes('play.google.com')) {
-        } else {
-            this.chipList.errorState = true;
-            ids.splice(index, 1)
-            setTimeout(()=> {
-              this.chipList.errorState = false;
-              }, 5000)
-          }
-        }
+      console.log('initial ids: ', ids)
   
-      if (!ids.length) {
+      var uniqIds = uniqBy(ids, (id) => id.storedAppID)
+  
+      console.log('unique ids: ', uniqIds)
+  
+      const properIDs = uniqIds.filter((id) => 
+        id.storedAppID.includes('apps.apple.com')
+      )
+  
+      console.log('Proper IDs: ', properIDs)
+  
+  
+      if (uniqIds.length > properIDs.length) {
+        this.chipList.errorState = true;
+        setTimeout(()=> {
+          this.chipList.errorState = false;
+        }, 5000)
+      }
+  
+      if (!properIDs.length) {
         console.log('No valid URLs added')
       } else {
-        console.log('Google ids array: ', ids)
+        console.log('Google ids array: ', properIDs)
         // debugger;
-        this.http.post<ID>(this.androidServerUrl, ids, { withCredentials: true })
+        this.http.post<ID>(this.androidServerUrl, properIDs, { withCredentials: true })
           .pipe(
             catchError(error => {
               console.log('Sending data failed')
               return throwError(error)
             })
-          ).subscribe(ids => console.log(ids))
+          ).subscribe(properIDs => console.log(properIDs))
           
           this.openSnackBar()
           this.callProgressBar()

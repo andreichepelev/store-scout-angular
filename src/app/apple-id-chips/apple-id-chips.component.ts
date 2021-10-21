@@ -99,24 +99,6 @@ export class AppleIdChipsComponent implements OnInit {
       }, 5000)
     }
 
-    // for (let id of ids) {
-    //   var index = ids.indexOf(id)
-    //   if(id.storedAppID.includes('apps.apple.com')) {  
-    //     properIDs.push(id)
-    //     console.log('Proper IDs after pushing: ', properIDs)
-    //   } else {
-    //       this.chipList.errorState = true;
-    //       ids.splice(index, 1)
-    //       console.log('removed from the array:', id)
-    //       setTimeout(()=> {
-    //         this.chipList.errorState = false;
-    //         }, 5000)
-    //   }
-    //   console.log('ids after loop iteration: ', index, ids)
-    // }
-
-    // console.log('Apple ids array: ', ids)
-
     if (!properIDs.length) {
       console.log('No valid URLs added')
     } else {
