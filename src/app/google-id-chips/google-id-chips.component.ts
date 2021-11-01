@@ -116,18 +116,6 @@ export class GoogleIdChipsComponent implements OnInit {
 
     sendAndroidRequest() {
 
-      // for (let id of ids) {
-      //   var index = ids.indexOf(id)
-      //   if(id.storedAppID.includes('play.google.com')) {
-      //   } else {
-      //       this.chipList.errorState = true;
-      //       ids.splice(index, 1)
-      //       setTimeout(()=> {
-      //         this.chipList.errorState = false;
-      //         }, 5000)
-      //     }
-      //   }
-
       var ids = this.ids
   
       console.log('initial ids: ', ids)
@@ -141,7 +129,6 @@ export class GoogleIdChipsComponent implements OnInit {
       )
   
       console.log('Proper IDs: ', properIDs)
-  
   
       if (uniqIds.length > properIDs.length) {
         this.chipList.errorState = true;
